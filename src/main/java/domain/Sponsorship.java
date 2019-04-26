@@ -94,7 +94,7 @@ public class Sponsorship extends DomainEntity {
 		this.isActive = isActive;
 	}
 
-	public void setParade(final Position position) {
+	public void setPosition(final Position position) {
 		this.position = position;
 	}
 

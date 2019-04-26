@@ -5,25 +5,28 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 @Entity
 @Access(AccessType.PROPERTY)
 public class Provider extends Actor {
 
 	//Attributes
 
-	private String	make;
+	private String	makeP;
 
 
 	//Getters
 
-	public String getMake() {
-		return this.make;
+	@NotBlank
+	public String getMakeP() {
+		return this.makeP;
 	}
 
 	//Setters
 
-	public void setMake(final String make) {
-		this.make = make;
+	public void setMakeP(final String makeP) {
+		this.makeP = makeP;
 	}
 
 }
