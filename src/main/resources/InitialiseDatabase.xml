@@ -63,13 +63,13 @@
 	<!-- Configuration beans -->
 	
 	<bean id="configuration1" class="domain.Configuration">
-		<property name="systemName" value="Acme Hacker Rank" />
+		<property name="systemName" value="Acme Rookies" />
 		<property name="banner"
 			value="https://i.imgur.com/7b8lu4b.png" />
 		<property name="welcomeES"
-			value="¡Bienvenidos a Acme Hacker Rank! ¡Somos el mercado de trabajo favorito de los profesionales de las TICs!" />
+			value="¡Bienvenidos a Acme Rookies! ¡Somos el mercado de trabajo favorito de los profesionales de las TICs!" />
 		<property name="welcomeEN"
-			value="Welcome to Acme hacker Rank! We're IT hacker's favourite job marketplace!" />
+			value="Welcome to Acme Rookies! We're IT hacker's favourite job marketplace!" />
 		<property name="spamWords">
 			<list>
 				<value>sex</value>
