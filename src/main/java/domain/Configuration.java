@@ -7,6 +7,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -28,6 +29,8 @@ public class Configuration extends DomainEntity {
 	private String				countryCode;
 	private Integer				expireFinderMinutes;
 	private Integer				maxFinderResults;
+	private Double				vat;
+	private Double				flat;
 
 
 	//Getters
@@ -74,6 +77,18 @@ public class Configuration extends DomainEntity {
 		return this.maxFinderResults;
 	}
 
+	@Min(0)
+	@NotNull
+	public Double getVat() {
+		return this.vat;
+	}
+
+	@Min(0)
+	@NotNull
+	public Double getFlat() {
+		return this.flat;
+	}
+
 	//Setters
 	public void setSystemName(final String systemName) {
 		this.systemName = systemName;
@@ -105,6 +120,14 @@ public class Configuration extends DomainEntity {
 
 	public void setMaxFinderResults(final Integer maxFinderResults) {
 		this.maxFinderResults = maxFinderResults;
+	}
+
+	public void setVat(final Double vat) {
+		this.vat = vat;
+	}
+
+	public void setFlat(final Double flat) {
+		this.flat = flat;
 	}
 
 }
