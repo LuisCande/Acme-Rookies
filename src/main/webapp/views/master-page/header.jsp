@@ -16,7 +16,7 @@
 <spring:message code="master.page.cancel.confirm" var="msgConfirm" />
 
 <div>
-	<a href="#"><img src="images/logo.png" alt="Sample Co., Inc." /></a>
+	<a href="#"><img src="images/logo.png" alt="Acme Rookies Co., Inc." /></a>
 </div>
 
 <div>
