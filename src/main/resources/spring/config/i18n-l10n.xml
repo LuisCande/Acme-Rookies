@@ -25,6 +25,8 @@
 
 		<value>/views/actor/messages</value>
 		<value>/views/administrator/messages</value>
+		<value>/views/provider/messages</value>
+		<value>/views/auditor/messages</value>
 		<value>/views/company/messages</value>
 		<value>/views/configuration/messages</value>
 		<value>/views/finder/messages</value>
@@ -40,6 +42,8 @@
 		<value>/views/positionData/messages</value>
 		<value>/views/educationData/messages</value>
 		<value>/views/miscellaneousData/messages</value>
+		<value>/views/sponsorship/messages</value>
+		<value>/views/audit/messages</value>
 	</util:list>
 
 </beans>

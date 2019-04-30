@@ -32,11 +32,23 @@
 <spring:message code="position.finalMode" var="finalMode" />
 <spring:message code="position.finalMode.false" var="msgFalse" />
 <spring:message code="position.finalMode.true" var="msgTrue" />
+<spring:message code="position.audits" var="audits" />
 <spring:message code="position.company" var="company" />
 <spring:message code="position.return" var="returnMsg" />
 <spring:message code="position.formatDate.pattern" var="formatDate" />
 	
 	<%-- Displays the information of the selected position --%>
+	
+	<jstl:if test="${sponsorship != null}">
+		<hr>
+			<br />
+			<a href="${sponsorship.targetPage}">
+				<img src="${sponsorship.banner}" width="208" height="250">
+			</a>
+			<br/>
+		<hr>
+	</jstl:if>
+	
 	
 	<jstl:out value="${ticker}" />:
 	<jstl:out value="${position.ticker}" />
@@ -91,7 +103,18 @@
 	<jstl:out value="${company}" />:
 	<jstl:out value="${position.company.commercialName}"/>
 	<br />
-	<br>
 	
+	<jstl:if test="${not empty auditColl}">
+	
+	<spring:url var="auditUrl"
+		value="audit/listByPosition.do">
+		<spring:param name="varId"
+			value="${position.id}"/>
+	</spring:url>
+	
+	<jstl:out value="${audits}"/>:
+	<a href="${auditUrl}"><jstl:out value="${audits}"/></a>
+	<br>
+	</jstl:if>
 	<a href="welcome/index.do"><jstl:out value="${returnMsg}" /></a>
 

@@ -20,6 +20,8 @@
 <%-- Stored message variables --%>
 
 <spring:message code="company.commercialName" var="commercialName" />
+<spring:message code="company.auditScore" var="auditScore" />
+<spring:message code="company.auditScore.nil" var="auditScoreNill" />
 <spring:message code="company.name" var="name" />
 <spring:message code="company.surnames" var="surnames" />
 <spring:message code="company.vatNumber" var="vatNumber" />
@@ -47,6 +49,16 @@
 	<jstl:out value="${company.commercialName}" />
 	<br />
 	
+	<jstl:if test="${not empty company.auditScore}">
+	<jstl:out value="${auditScore}" />:
+	<jstl:out value="${company.auditScore}" />
+	<br />
+	</jstl:if>
+	<jstl:if test="${empty company.auditScore}">
+	<jstl:out value="${auditScore}" />:
+	<jstl:out value="${auditScore.nil}" />
+	<br />
+	</jstl:if>
 	<jstl:out value="${name}" />:
 	<jstl:out value="${company.name}"/>
 	<br />

@@ -20,12 +20,11 @@ public class Sponsorship extends DomainEntity {
 	private String		banner;
 	private String		targetPage;
 	private CreditCard	creditCard;
-	private Boolean		isActive;
 	private Double		charge;
 
 	//Relationships
 
-	private Sponsor		sponsor;
+	private Provider	provider;
 	private Position	position;
 
 
@@ -46,19 +45,14 @@ public class Sponsorship extends DomainEntity {
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
-	public Sponsor getSponsor() {
-		return this.sponsor;
+	public Provider getProvider() {
+		return this.provider;
 	}
 
 	@NotNull
 	@Valid
 	public CreditCard getCreditCard() {
 		return this.creditCard;
-	}
-
-	@NotNull
-	public Boolean getIsActive() {
-		return this.isActive;
 	}
 
 	@Valid
@@ -82,16 +76,12 @@ public class Sponsorship extends DomainEntity {
 		this.targetPage = targetPage;
 	}
 
-	public void setSponsor(final Sponsor sponsor) {
-		this.sponsor = sponsor;
+	public void setProvider(final Provider provider) {
+		this.provider = provider;
 	}
 
 	public void setCreditCard(final CreditCard creditCard) {
 		this.creditCard = creditCard;
-	}
-
-	public void setIsActive(final Boolean isActive) {
-		this.isActive = isActive;
 	}
 
 	public void setPosition(final Position position) {
