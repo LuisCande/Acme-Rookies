@@ -1081,6 +1081,8 @@
 		<property name="countryCode" value="+34 " />
 		<property name="expireFinderMinutes" value="60" />
 		<property name="maxFinderResults" value="10" />
+		<property name="vat" value="1.21" />
+		<property name="flat" value="5.00" />
 	</bean>
 	
 	<!-- Social Profile beans -->
