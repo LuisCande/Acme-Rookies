@@ -30,6 +30,7 @@ public class Audit extends DomainEntity {
 	private Date		moment;
 	private String		text;
 	private Double		score;
+	private Boolean		finalMode;
 
 	//Relationships
 
@@ -55,6 +56,12 @@ public class Audit extends DomainEntity {
 	public Double getScore() {
 		return this.score;
 	}
+
+	@NotNull
+	public Boolean getFinalMode() {
+		return this.finalMode;
+	}
+
 	@Valid
 	@NotNull
 	@ManyToOne(optional = false)
@@ -88,6 +95,10 @@ public class Audit extends DomainEntity {
 
 	public void setAuditor(final Auditor auditor) {
 		this.auditor = auditor;
+	}
+
+	public void setFinalMode(final Boolean finalMode) {
+		this.finalMode = finalMode;
 	}
 
 }

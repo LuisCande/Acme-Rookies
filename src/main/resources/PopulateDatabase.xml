@@ -138,7 +138,7 @@
 	
 	<bean id="userAccount9" class="security.UserAccount">
 		<property name="username" value="auditor1" />
-		<property name="password" value="c6ae6edca1ad45f42e619ec91a32b636" />
+		<property name="password" value="175d2e7a63f386554a4dd66e865c3e14" />
 		<property name="banned" value="false" />
 		<property name="inactive" value="false" />
 		<property name="authorities">
@@ -152,7 +152,7 @@
 	
 	<bean id="userAccount10" class="security.UserAccount">
 		<property name="username" value="auditor2" />
-		<property name="password" value="c6ae6edca1ad45f42e619ec91a32b636" />
+		<property name="password" value="04dd94ba3212ac52ad3a1f4cbfb52d4f" />
 		<property name="banned" value="false" />
 		<property name="inactive" value="false" />
 		<property name="authorities">
@@ -166,7 +166,7 @@
 	
 	<bean id="userAccount11" class="security.UserAccount">
 		<property name="username" value="provider1" />
-		<property name="password" value="c6ae6edca1ad45f42e619ec91a32b636" />
+		<property name="password" value="cdb82d56473901641525fbbd1d5dab56" />
 		<property name="banned" value="false" />
 		<property name="inactive" value="false" />
 		<property name="authorities">
@@ -180,41 +180,13 @@
 	
 	<bean id="userAccount12" class="security.UserAccount">
 		<property name="username" value="provider2" />
-		<property name="password" value="c6ae6edca1ad45f42e619ec91a32b636" />
+		<property name="password" value="ebfc815ee2cc6a16225105bb7b3e1e53" />
 		<property name="banned" value="false" />
 		<property name="inactive" value="false" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
 					<property name="authority" value="PROVIDER" />
-				</bean>
-			</list>
-		</property>
-	</bean>
-	
-	<bean id="userAccount13" class="security.UserAccount">
-		<property name="username" value="sponsor1" />
-		<property name="password" value="c6ae6edca1ad45f42e619ec91a32b636" />
-		<property name="banned" value="false" />
-		<property name="inactive" value="false" />
-		<property name="authorities">
-			<list>
-				<bean class="security.Authority">
-					<property name="authority" value="SPONSOR" />
-				</bean>
-			</list>
-		</property>
-	</bean>
-	
-	<bean id="userAccount14" class="security.UserAccount">
-		<property name="username" value="sponsor2" />
-		<property name="password" value="c6ae6edca1ad45f42e619ec91a32b636" />
-		<property name="banned" value="false" />
-		<property name="inactive" value="false" />
-		<property name="authorities">
-			<list>
-				<bean class="security.Authority">
-					<property name="authority" value="SPONSOR" />
 				</bean>
 			</list>
 		</property>
@@ -266,6 +238,7 @@
 		<property name="spammer" value="false" />
 		<property name="evaluated" value="false" />
 		<property name="commercialName" value="CodeLuis" />
+		<property name="auditScore" value="0.5" />
 		<property name="userAccount" ref="userAccount2" />
 	</bean>
 	
@@ -282,6 +255,7 @@
 		<property name="spammer" value="false" />
 		<property name="evaluated" value="false" />
 		<property name="commercialName" value="Informatic Profesionals Marmor" />
+		<property name="auditScore"><null/></property>
 		<property name="userAccount" ref="userAccount3" />
 	</bean>
 	
@@ -298,6 +272,7 @@
 		<property name="spammer" value="false" />
 		<property name="evaluated" value="false" />
 		<property name="commercialName" value="High Mountain Computers" />
+		<property name="auditScore" value="0" />
 		<property name="userAccount" ref="userAccount4" />
 	</bean>
 	
@@ -415,38 +390,6 @@
 		<property name="evaluated" value="false" />
 		<property name="makeP" value="Amazon" />
 		<property name="userAccount" ref="userAccount12" />
-	</bean>
-	
-	<!-- Sponsor beans -->
-	
-	<bean id="sponsor1" class="domain.Sponsor">
-		<property name="name" value="Diego" />
-		<property name="surnames" value="Santiago Lopez" />
-		<property name="vatNumber" value="ATU00000158" />
-		<property name="creditCard" ref="creditCard12" />
-		<property name="photo"
-			value="https://cdnb.20m.es/sites/76/2015/07/La-an%C3%A9cdota-sobre-la-famosa-e-ic%C3%B3nica-foto-de-Albert-Einstein-sacando-la-lengua.jpeg" />
-		<property name="email" value="diegosan@gmail.com" />
-		<property name="phone" value="621111451" />
-		<property name="address" value="c/Boralus 18" />
-		<property name="spammer" value="false" />
-		<property name="evaluated" value="false" />
-		<property name="userAccount" ref="userAccount13" />
-	</bean>
-	
-	<bean id="sponsor2" class="domain.Sponsor">
-		<property name="name" value="Samuel" />
-		<property name="surnames" value="Tarly Marquez" />
-		<property name="vatNumber" value="ATU00000160" />
-		<property name="creditCard" ref="creditCard13" />
-		<property name="photo"
-			value="https://cdnb.20m.es/sites/76/2015/07/La-an%C3%A9cdota-sobre-la-famosa-e-ic%C3%B3nica-foto-de-Albert-Einstein-sacando-la-lengua.jpeg" />
-		<property name="email" value="samwellTarly@gmail.com" />
-		<property name="phone" value="621111333" />
-		<property name="address" value="c/Nieve 1" />
-		<property name="spammer" value="false" />
-		<property name="evaluated" value="false" />
-		<property name="userAccount" ref="userAccount14" />
 	</bean>
 	
 	<!-- CreditCard beans -->
@@ -576,6 +519,7 @@
 		<property name="moment" value="2019/02/20 13:00" />
 		<property name="text" value="This is a good work to begin" />
 		<property name="score" value="5.5" />
+		<property name="finalMode" value="true" />
 		<property name="auditor" ref="auditor1" />
 		<property name="position" ref="position1" />
 	</bean>	
@@ -584,6 +528,7 @@
 		<property name="moment" value="2018/10/21 13:00" />
 		<property name="text" value="Very high complexity" />
 		<property name="score" value="7.0" />
+		<property name="finalMode" value="true" />
 		<property name="auditor" ref="auditor1" />
 		<property name="position" ref="position2" />
 	</bean>	
@@ -592,6 +537,7 @@
 		<property name="moment" value="2018/11/20 10:00" />
 		<property name="text" value="Little definition of requirements" />
 		<property name="score" value="3.5" />
+		<property name="finalMode" value="false" />
 		<property name="auditor" ref="auditor2" />
 		<property name="position" ref="position3" />
 	</bean>	
@@ -628,9 +574,8 @@
 		<property name="banner" value="http://store.latingamers.net/image/cache/catalog/Manufacturers/Intel-400x200.png" />
 		<property name="targetPage" value="https://www.intel.es/content/www/es/es/homepage.html" />
 		<property name="creditCard" ref="creditCard12" />
-		<property name="isActive" value="true" />
-		<property name="sponsor" ref="sponsor1" />
-		<property name="position" ref="position1" />
+		<property name="provider" ref="provider1" />
+		<property name="position" ref="position5" />
 		<property name="charge" value="25.3" />
 	</bean>
 	
@@ -638,36 +583,32 @@
 		<property name="banner" value="https://s03.s3c.es/imag/_v0/640x319/4/5/e/telegram.jpg" />
 		<property name="targetPage" value="http://telegram.com.es/" />
 		<property name="creditCard" ref="creditCard12" />
-		<property name="isActive" value="true" />
-		<property name="sponsor" ref="sponsor1" />
-		<property name="position" ref="position2" />
+		<property name="provider" ref="provider1" />
+		<property name="position" ref="position5" />
 		<property name="charge" value="40.24" />
 	</bean>
 	<bean id="sponsorship3" class="domain.Sponsorship">
 		<property name="banner" value="https://upload.wikimedia.org/wikipedia/commons/7/71/DAZN_logo.svg" />
 		<property name="targetPage" value="https://www.dazn.com" />
 		<property name="creditCard" ref="creditCard12" />
-		<property name="isActive" value="true" />
-		<property name="sponsor" ref="sponsor1" />
-		<property name="position" ref="position3" />
+		<property name="provider" ref="provider1" />
+		<property name="position" ref="position5" />
 		<property name="charge" value="1200.0" />
 	</bean>
 	<bean id="sponsorship4" class="domain.Sponsorship">
 		<property name="banner" value="https://cdn.worldvectorlogo.com/logos/instant-gaming-1.svg" />
 		<property name="targetPage" value="https://www.instant-gaming.com" />
 		<property name="creditCard" ref="creditCard13" />
-		<property name="isActive" value="true" />
-		<property name="sponsor" ref="sponsor2" />
-		<property name="position" ref="position1" />
+		<property name="provider" ref="provider2" />
+		<property name="position" ref="position5" />
 		<property name="charge" value="65.14" />
 	</bean>
 	<bean id="sponsorship5" class="domain.Sponsorship">
 		<property name="banner" value="https://upload.wikimedia.org/wikipedia/commons/c/ce/Coca-Cola_logo.svg" />
 		<property name="targetPage" value="https://www.cocacola.com" />
 		<property name="creditCard" ref="creditCard13" />
-		<property name="isActive" value="false" />
-		<property name="sponsor" ref="sponsor2" />
-		<property name="position" ref="position2" />
+		<property name="provider" ref="provider2" />
+		<property name="position" ref="position5" />
 		<property name="charge" value="285.0" />
 	</bean>
 
@@ -675,9 +616,8 @@
 		<property name="banner" value="https://www.mercadona.com/estaticos/images/mercadona_logo/es/mercadona-imagotipo-color-300.png" />
 		<property name="targetPage" value="https://www.mercadona.es/"/>
 		<property name="creditCard" ref="creditCard13" />
-		<property name="isActive" value="false" />
-		<property name="sponsor" ref="sponsor2" />
-		<property name="position" ref="position3" />
+		<property name="provider" ref="provider2" />
+		<property name="position" ref="position5" />
 		<property name="charge" value="212.70" />
 	</bean>
 	
@@ -1082,7 +1022,7 @@
 		<property name="expireFinderMinutes" value="60" />
 		<property name="maxFinderResults" value="10" />
 		<property name="vat" value="1.21" />
-		<property name="flat" value="5.00" />
+		<property name="fare" value="5.00" />
 	</bean>
 	
 	<!-- Social Profile beans -->

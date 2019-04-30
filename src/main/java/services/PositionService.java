@@ -25,6 +25,7 @@ import domain.Finder;
 import domain.Message;
 import domain.Position;
 import domain.Problem;
+import domain.Sponsorship;
 
 @Service
 @Transactional
@@ -48,6 +49,9 @@ public class PositionService {
 
 	@Autowired
 	private MessageService		messageService;
+
+	@Autowired
+	private SponsorshipService	sponsorshipService;
 
 
 	//Simple CRUD methods
@@ -263,6 +267,18 @@ public class PositionService {
 		if (f.getKeyWord() == null && f.getSpecificDeadline() == null && f.getMinSalary() == null && f.getMaxSalary() == null)
 			return true;
 		return false;
+	}
+
+	//Selects a random sponsorship
+	public Sponsorship selectRandomSponsorship(final int id) {
+		final Collection<Sponsorship> sponsorships = this.sponsorshipService.getSponsorshipsByPosition(id);
+		if (sponsorships.isEmpty())
+			return null;
+		else {
+			final Random rnd = new Random();
+			final int i = rnd.nextInt(sponsorships.size());
+			return (Sponsorship) sponsorships.toArray()[i];
+		}
 	}
 
 	//Time for motion and queries

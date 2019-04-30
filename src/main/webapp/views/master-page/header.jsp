@@ -36,6 +36,16 @@
 						<li><a href="company/edit.do"><spring:message
 									code="master.page.actor.edit" /></a></li>
 					</security:authorize>
+					
+					<security:authorize access="hasRole('PROVIDER')">
+						<li><a href="provider/edit.do"><spring:message
+									code="master.page.actor.edit" /></a></li>
+					</security:authorize>
+					
+					<security:authorize access="hasRole('AUDITOR')">
+						<li><a href="auditor/edit.do"><spring:message
+									code="master.page.actor.edit" /></a></li>
+					</security:authorize>
 
 					<security:authorize access="hasRole('HACKER')">
 						<li><a href="hacker/edit.do"><spring:message
@@ -87,6 +97,8 @@
 					<li class="arrow"></li>
 					<li><a href="administrator/create.do"><spring:message
 								code="master.page.administrator.create" /></a></li>
+					<li><a href="administrator/createAuditor.do"><spring:message
+								code="master.page.administrator.auditor" /></a></li>
 				</ul></li>
 		</security:authorize>
 		
@@ -114,7 +126,28 @@
 					code="master.page.application.list" /></a></li>
 		</security:authorize>
 		
+		<security:authorize access="hasRole('PROVIDER')">
+			<li><a class="fNiv"><spring:message
+						code="master.page.provider" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="sponsorship/provider/list.do"><spring:message
+						code="master.page.sponsorship.list" /></a></li>
+				</ul></li>
+			
+		</security:authorize>
 		
+		<security:authorize access="hasRole('AUDITOR')">
+		<li><a class="fNiv"><spring:message
+						code="master.page.auditor" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="audit/auditor/list.do"><spring:message
+						code="master.page.audit.list" /></a></li>
+				</ul></li>
+			
+			
+		</security:authorize>
 		
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
@@ -128,6 +161,8 @@
 								code="master.page.register.company" /></a></li>
 					<li><a href="hacker/create.do"><spring:message
 								code="master.page.register.hacker" /></a></li>
+					<li><a href="provider/create.do"><spring:message
+								code="master.page.register.provider" /></a></li>
 
 				</ul>
 				

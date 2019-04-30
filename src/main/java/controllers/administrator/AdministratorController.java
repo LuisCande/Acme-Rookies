@@ -28,6 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 import services.ActorService;
 import services.AdministratorService;
 import services.ApplicationService;
+import services.AuditorService;
 import services.CompanyService;
 import services.ConfigurationService;
 import services.CurriculumService;
@@ -37,8 +38,11 @@ import services.PositionService;
 import controllers.AbstractController;
 import domain.Actor;
 import domain.Administrator;
+import domain.Auditor;
+import domain.Company;
 import domain.Configuration;
 import forms.FormObjectAdministrator;
+import forms.FormObjectAuditor;
 
 @Controller
 @RequestMapping("/administrator")
@@ -60,6 +64,9 @@ public class AdministratorController extends AbstractController {
 
 	@Autowired
 	private CompanyService			companyService;
+
+	@Autowired
+	private AuditorService			auditorService;
 
 	@Autowired
 	private HackerService			hackerService;
@@ -87,6 +94,22 @@ public class AdministratorController extends AbstractController {
 		foa.setPhone(config.getCountryCode());
 
 		result = this.createEditModelAndView(foa);
+
+		return result;
+	}
+
+	//Create auditor
+	@RequestMapping(value = "/createAuditor", method = RequestMethod.GET)
+	public ModelAndView createAuditor() {
+		final ModelAndView result;
+		FormObjectAuditor foau;
+
+		final Configuration config = this.configurationService.findAll().iterator().next();
+
+		foau = new FormObjectAuditor();
+		foau.setPhone(config.getCountryCode());
+
+		result = this.createEditModelAndView(foau);
 
 		return result;
 	}
@@ -149,6 +172,31 @@ public class AdministratorController extends AbstractController {
 		return result;
 	}
 
+	//Create POST auditor
+
+	@RequestMapping(value = "/createAuditor", method = RequestMethod.POST, params = "create")
+	public ModelAndView saveAuditor(final FormObjectAuditor foau, final BindingResult binding) {
+		ModelAndView result;
+		Auditor auditor;
+
+		try {
+			auditor = this.auditorService.reconstruct(foau, binding);
+		} catch (final ConstraintDefinitionException oops) {
+			return this.createEditModelAndView(foau, "administrator.expirationDate.error");
+		} catch (final ValidationException oops) {
+			return this.createEditModelAndView(foau, "administrator.validation.error");
+		} catch (final Throwable oops) {
+			return result = this.createEditModelAndView(foau, "administrator.reconstruct.error");
+		}
+		try {
+			this.auditorService.save(auditor);
+			result = new ModelAndView("redirect:/welcome/index.do");
+		} catch (final Throwable oops) {
+			result = this.createEditModelAndView(foau, "administrator.commit.error");
+		}
+		return result;
+	}
+
 	//Dashboard
 
 	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
@@ -192,6 +240,12 @@ public class AdministratorController extends AbstractController {
 		final Actor actor = this.actorService.findOne(varId);
 
 		result = new ModelAndView("actor/display");
+
+		final Company company = (Company) actor;
+		if (company.getAuditScore() != null) {
+			final Double score = company.getAuditScore();
+			result.addObject("score", score);
+		}
 		result.addObject("actor", actor);
 
 		return result;
@@ -238,6 +292,27 @@ public class AdministratorController extends AbstractController {
 		}
 	}
 
+	//Create auditor protected methods
+
+	protected ModelAndView createEditModelAndView(final FormObjectAuditor foau) {
+		ModelAndView result;
+
+		result = this.createEditModelAndView(foau, null);
+
+		return result;
+	}
+
+	protected ModelAndView createEditModelAndView(final FormObjectAuditor foau, final String messageCode) {
+		ModelAndView result;
+
+		result = new ModelAndView("auditor/create");
+		result.addObject("foau", foau);
+		result.addObject("message", messageCode);
+		result.addObject("requestURI", "administrator/createAuditor.do");
+
+		return result;
+
+	}
 	//Ancillary methods
 
 	protected ModelAndView createEditModelAndView(final FormObjectAdministrator foa) {

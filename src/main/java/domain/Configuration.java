@@ -30,7 +30,7 @@ public class Configuration extends DomainEntity {
 	private Integer				expireFinderMinutes;
 	private Integer				maxFinderResults;
 	private Double				vat;
-	private Double				flat;
+	private Double				fare;
 
 
 	//Getters
@@ -85,8 +85,8 @@ public class Configuration extends DomainEntity {
 
 	@Min(0)
 	@NotNull
-	public Double getFlat() {
-		return this.flat;
+	public Double getFare() {
+		return this.fare;
 	}
 
 	//Setters
@@ -126,8 +126,8 @@ public class Configuration extends DomainEntity {
 		this.vat = vat;
 	}
 
-	public void setFlat(final Double flat) {
-		this.flat = flat;
+	public void setFare(final Double fare) {
+		this.fare = fare;
 	}
 
 }

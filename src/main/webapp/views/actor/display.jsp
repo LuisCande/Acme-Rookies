@@ -31,7 +31,9 @@
 <spring:message code="actor.photo" var="photo" />
 <spring:message code="actor.email" var="email" />
 <spring:message code="actor.phone" var="phone" />
+<spring:message code="actor.auditScore.nil" var="nil" />
 <spring:message code="actor.address" var="address" />
+<spring:message code="actor.auditScore" var="auditScore" />
 <spring:message code="actor.spammer" var="spammer" />
 <spring:message code="actor.Tspammer" var="Tspammer" />
 <spring:message code="actor.Fspammer" var="Fspammer" />
@@ -70,6 +72,16 @@
 	<jstl:out value="${actor.address}"/>
 	<br />
 	
+	<jstl:if test="${not empty score}">
+	<jstl:out value="${auditScore}" />:
+	<jstl:out value="${score}" />
+	<br />
+	</jstl:if>
+	<jstl:if test="${empty score}">
+	<jstl:out value="${auditScore}" />:
+	<jstl:out value="${nil}" />
+	<br />
+	</jstl:if>
 
 	<jstl:if test="${actor.evaluated eq true}">
 	<jstl:out value="${spammer}" />:

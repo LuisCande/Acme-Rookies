@@ -67,6 +67,7 @@ public class FormObjectCompany {
 		return this.address;
 	}
 
+	@NotBlank
 	public String getCommercialName() {
 		return this.commercialName;
 	}

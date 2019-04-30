@@ -37,6 +37,7 @@
 <spring:message code="position.clear" var="msgClear" />
 <spring:message code="position.keyword" var="msgKeyword" />
 <spring:message code="position.cancel" var="cancel" />
+<spring:message code="position.audits" var="audits" />
 <spring:message code="position.formatDate.pattern" var="formatDate" />
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
@@ -92,7 +93,7 @@
 		<spring:param name="varId"
 			value="${row.id}"/>
 	</spring:url>
-
+	
 	<display:column title="${company}">
 			<a href="${companyUrl}"><jstl:out value="${row.company.commercialName}" /></a>
 	</display:column>
