@@ -30,6 +30,7 @@
 <spring:message code="configuration.expireFinderMinutes" var="expireFinderMinutes" />
 <spring:message code="configuration.maxFinderResults" var="maxFinderResults" />
 
+<spring:message code="configuration.announce" var="announceMsg" />
 <spring:message code="configuration.return" var="returnMsg" />
 <spring:message code="configuration.edit" var="edit" />
 
@@ -39,6 +40,9 @@
 	
 	<jstl:out value="${systemName}" />:
 	<jstl:out value="${configuration.systemName}" />
+	<jstl:if test="${configuration.nameAnnounced eq false}">
+		- <a href="message/administrator/announce.do"><jstl:out value="${announceMsg}" /></a>
+	</jstl:if>
 	<br />
 		
 	<jstl:out value="${banner}" />:

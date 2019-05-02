@@ -1023,6 +1023,7 @@
 		<property name="maxFinderResults" value="10" />
 		<property name="vat" value="1.21" />
 		<property name="fare" value="5.00" />
+		<property name="nameAnnounced" value="false" />
 	</bean>
 	
 	<!-- Social Profile beans -->

@@ -85,7 +85,7 @@ public class ItemService {
 		else
 			result = this.findOne(i.getId());
 
-		result.setName(i.getDescription());
+		result.setName(i.getName());
 		result.setDescription(i.getDescription());
 		result.setLink(i.getLink());
 		result.setPicture(i.getPicture());
@@ -106,5 +106,12 @@ public class ItemService {
 	}
 	public void flush() {
 		this.itemRepository.flush();
+	}
+
+	//Time for motion and queries
+
+	//Retrieves a list of items for a certain provider
+	public Collection<Item> getItemsForProvider(final int id) {
+		return this.itemRepository.getItemsForProvider(id);
 	}
 }

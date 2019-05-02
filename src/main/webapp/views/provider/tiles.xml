@@ -26,6 +26,11 @@
 		<put-attribute name="body" value="/views/provider/edit.jsp" />
 	</definition>
 	
+	<definition name="provider/list" extends="master.page">	
+		<put-attribute name="title" value="Provider's list"/>
+		<put-attribute name="body" value="/views/provider/list.jsp" />
+	</definition>
+	
 	<definition name="provider/display" extends="master.page">	
 		<put-attribute name="title" value="Provider display" />
 		<put-attribute name="body" value="/views/provider/display.jsp" />

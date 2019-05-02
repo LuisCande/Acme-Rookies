@@ -133,6 +133,8 @@
 					<li class="arrow"></li>
 					<li><a href="sponsorship/provider/list.do"><spring:message
 						code="master.page.sponsorship.list" /></a></li>
+					<li><a href="item/provider/list.do"><spring:message
+								code="master.page.provider.item" /></a></li>
 				</ul></li>
 			
 		</security:authorize>
@@ -174,8 +176,13 @@
 					<li class="arrow"></li>
 					<li><a href="company/list.do"><spring:message
 								code="master.page.list.company" /></a></li>
+					<li><a href="provider/list.do"><spring:message
+								code="master.page.list.provider" /></a></li>
 					<li><a href="position/list.do"><spring:message
 								code="master.page.list.position" /></a></li>
+					<li><a href="item/list.do"><spring:message
+								code="master.page.list.item" /></a></li>
+					
 				</ul></li>
 		
 		</security:authorize>
