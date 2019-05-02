@@ -39,7 +39,6 @@ public class ProviderController extends AbstractController {
 
 
 	//Listing all
-
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
 		final ModelAndView result;

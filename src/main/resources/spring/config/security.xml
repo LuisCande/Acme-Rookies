@@ -43,6 +43,7 @@
 		<security:intercept-url pattern="/provider/**" access="permitAll" />
 		<security:intercept-url pattern="/auditor/**" access="permitAll" />
 		<security:intercept-url pattern="/audit/**" access="permitAll" />
+		<security:intercept-url pattern="/item/**" access="permitAll" />
 		
 		<security:intercept-url pattern="/curriculum/**" access="hasRole('HACKER')" />
 		<security:intercept-url pattern="/personalData/**" access="hasRole('HACKER')" />
@@ -66,7 +67,7 @@
 		<security:intercept-url pattern="/application/company/**" access="hasRole('COMPANY')" />
 		
 		<security:intercept-url pattern="/sponsorship/provider/**" access="hasRole('PROVIDER')" />
-		
+		<security:intercept-url pattern="/item/provider/**" access="hasRole('PROVIDER')" />
 		
 		<security:intercept-url pattern="/audit/auditor/**" access="hasRole('AUDITOR')" />
 		
