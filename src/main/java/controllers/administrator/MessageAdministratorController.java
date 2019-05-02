@@ -2,6 +2,7 @@
 package controllers.administrator;
 
 import java.util.Collection;
+import java.util.Date;
 
 import javax.validation.ValidationException;
 
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
+import services.ConfigurationService;
 import services.MessageService;
 import controllers.AbstractController;
 import domain.Actor;
+import domain.Configuration;
 import domain.Message;
 
 @Controller
@@ -25,11 +28,46 @@ public class MessageAdministratorController extends AbstractController {
 	//Services
 
 	@Autowired
-	private MessageService	messageService;
+	private MessageService			messageService;
 
 	@Autowired
-	private ActorService	actorService;
+	private ActorService			actorService;
 
+	@Autowired
+	private ConfigurationService	configurationService;
+
+
+	//Announce name 
+	@RequestMapping(value = "/announce", method = RequestMethod.GET)
+	public ModelAndView announce() {
+		final ModelAndView result;
+		Message message1;
+
+		final Configuration config = this.configurationService.findAll().iterator().next();
+
+		result = new ModelAndView("configuration/display");
+		if (config.getNameAnnounced() == true) {
+			result.addObject("message", "configuration.announce.error");
+			result.addObject("configuration", config);
+			result.addObject("requestURI", "configuration/administrator/display.do");
+			return result;
+		}
+
+		message1 = this.messageService.create();
+		message1.setTags("SYSTEM");
+		message1.setSubject("Rebranding notification / Aviso del cambio de nombre");
+		message1.setBody("This is a message to notify the rebranding. Now we are Acme-Rookies!");
+		message1.setSent(new Date(System.currentTimeMillis() - 1));
+
+		config.setNameAnnounced(true);
+		this.configurationService.save(config);
+
+		this.messageService.broadcastMessage(message1);
+
+		result.addObject("configuration", config);
+		result.addObject("requestURI", "configuration/administrator/display.do");
+		return result;
+	}
 
 	//Create notification
 

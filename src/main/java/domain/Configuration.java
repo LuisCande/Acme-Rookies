@@ -31,6 +31,7 @@ public class Configuration extends DomainEntity {
 	private Integer				maxFinderResults;
 	private Double				vat;
 	private Double				fare;
+	private Boolean				nameAnnounced;
 
 
 	//Getters
@@ -89,6 +90,11 @@ public class Configuration extends DomainEntity {
 		return this.fare;
 	}
 
+	@NotNull
+	public Boolean getNameAnnounced() {
+		return this.nameAnnounced;
+	}
+
 	//Setters
 	public void setSystemName(final String systemName) {
 		this.systemName = systemName;
@@ -128,6 +134,10 @@ public class Configuration extends DomainEntity {
 
 	public void setFare(final Double fare) {
 		this.fare = fare;
+	}
+
+	public void setNameAnnounced(final Boolean nameAnnounced) {
+		this.nameAnnounced = nameAnnounced;
 	}
 
 }

@@ -33,6 +33,7 @@
 <spring:message code="provider.phone" var="phone" />
 <spring:message code="provider.address" var="address" />
 <spring:message code="provider.makeP" var="makeP" />
+<spring:message code="provider.items" var="items" />
 <spring:message code="provider.spammer" var="spammer" />
 <spring:message code="provider.Tspammer" var="Tspammer" />
 <spring:message code="provider.Fspammer" var="Fspammer" />
@@ -93,7 +94,16 @@
 	</jstl:if>
   	</security:authorize>
 	
+	<spring:url var="itemsUrl"
+		value="item/listByProvider.do">
+		<spring:param name="varId"
+			value="${provider.id}"/>
+	</spring:url>
+	
+	<a href="${itemsUrl}"><jstl:out value="${items}" /></a>
+	
 	<br />
+	<br/>
 	
 	<fieldset>
 	<legend><jstl:out value="${creditCard}" /></legend>
@@ -119,5 +129,6 @@
 	<br />
 	</fieldset>
   		
+  	
 	<a href="welcome/index.do"><jstl:out value="${returnMsg}" /></a>
 
