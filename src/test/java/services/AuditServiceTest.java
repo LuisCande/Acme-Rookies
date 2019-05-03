@@ -103,18 +103,18 @@ public class AuditServiceTest extends AbstractTest {
 				"auditor1", null, "position4", "createNegative", ConstraintViolationException.class
 			},
 			/*
-			 * Negative: A auditor tries to create a audit with invalid data.
+			 * Negative: A auditor tries to create an audit with invalid data.
 			 * Requisite tested: 3.2. An actor who is authenticated as an auditor must be able to:
 			 * Manage his or her audits, which includes listing them, showing them, creating them,
 			 * updating, and deleting them. An audit can be updated or deleted as long as it is saved in draft mode.
-			 * Data coverage : We created a audit with 4 out of 5 valid parameters.
+			 * Data coverage : We created an audit with 4 out of 5 valid parameters.
 			 * Exception expected: ConstraintViolationException. Moment must be past.
 			 */
 			{
 				"auditor2", null, "audit1", "edit", IllegalArgumentException.class
 			},
 			/*
-			 * Negative: A auditor tries to edit a audit that not owns.
+			 * Negative: A auditor tries to edit an audit that not owns.
 			 * Requisite tested: 3.2. An actor who is authenticated as an auditor must be able to:
 			 * Manage his or her audits, which includes listing them, showing them, creating them,
 			 * updating, and deleting them. An audit can be updated or deleted as long as it is saved in draft mode.
@@ -125,7 +125,7 @@ public class AuditServiceTest extends AbstractTest {
 				"auditor1", null, "audit1", "delete", IllegalArgumentException.class
 			},
 		/*
-		 * Negative: A auditor tries to delete a audit that is saved in final mode.
+		 * Negative: A auditor tries to delete an audit that is saved in final mode.
 		 * Requisite tested: 3.2. An actor who is authenticated as an auditor must be able to:
 		 * Manage his or her audits, which includes listing them, showing them, creating them,
 		 * updating, and deleting them. An audit can be updated or deleted as long as it is saved in draft mode.
