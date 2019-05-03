@@ -31,9 +31,6 @@ public class ProviderServiceTest extends AbstractTest {
 	@Autowired
 	private ProviderService	providerService;
 
-	@Autowired
-	private PositionService	positionService;
-
 
 	@Test
 	public void ProviderPositiveTest() {
