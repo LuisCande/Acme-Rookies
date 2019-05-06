@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collection;
@@ -203,4 +204,32 @@ public class ProviderService {
 	public void flush() {
 		this.providerRepository.flush();
 	}
+
+	//The minimum, the maximum, the average, and the standard deviation of the number of items per provider
+	public Double[] minMaxAvgStddevItemPerProvider() {
+		return this.providerRepository.minMaxAvgStddevItemPerProvider();
+	}
+
+	//The top-5 providers in terms of total number of items provided
+	public Collection<String> top5ProviderInTermsOfItems() {
+		Collection<String> results = new ArrayList<>();
+		final Collection<String> providers = this.providerRepository.top5ProviderInTermsOfItems();
+		final int maxResults = 5;
+		if (providers.size() > maxResults)
+			results = new ArrayList<String>(((ArrayList<String>) providers).subList(0, maxResults));
+		else
+			results = providers;
+		return results;
+	}
+
+	//The average, the minimum, the maximum, and the standard deviation of the	number of sponsorships per provider.
+	public Double[] avgMinMaxStddevSponsorshipsPerProvider() {
+		return this.providerRepository.avgMinMaxStddevSponsorshipsPerProvider();
+	}
+
+	//The providers who have a number of sponsorships that is at least 10% above the average number of sponsorships per provider
+	public Collection<String> providersWith10PerCentMoreSponsorshipsThanAvg() {
+		return this.providerRepository.providersWith10PerCentMoreSponsorshipsThanAvg();
+	}
+
 }

@@ -337,4 +337,20 @@ public class PositionService {
 	public Collection<Position> searchPosition(final String keyWord) {
 		return this.positionRepository.searchPosition(keyWord);
 	}
+
+	//The average, the minimum, the maximum, and the standard deviation of the audit score of the positions stored in the system
+	public Double[] avgMinMaxStddevAuditScorePerPosition() {
+		return this.positionRepository.avgMinMaxStddevAuditScorePerPosition();
+	}
+
+	//The average salary offered by the positions that have the highest average audit score
+	public Collection<String> avgSalaryOfferedPerPositionWithHighestAvgAuditScore() {
+		return this.positionRepository.avgSalaryOfferedPerPositionWithHighestAvgAuditScore();
+	}
+
+	//The average, the minimum, the maximum, and the standard deviation of the number of sponsorships per position
+	public Double[] avgMinMaxStddevSponsorshipsPerPosition() {
+		return this.positionRepository.avgMinMaxStddevSponsorshipsPerPosition();
+	}
+
 }
