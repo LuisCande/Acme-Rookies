@@ -45,6 +45,7 @@ public class Position extends DomainEntity {
 	//Relationships
 
 	private Company				company;
+	private Auditor				auditor;
 	private Collection<Problem>	problems;
 
 
@@ -102,6 +103,12 @@ public class Position extends DomainEntity {
 	@NotNull
 	public Boolean getFinalMode() {
 		return this.finalMode;
+	}
+
+	@Valid
+	@ManyToOne(optional = true)
+	public Auditor getAuditor() {
+		return this.auditor;
 	}
 
 	@Valid
@@ -164,5 +171,9 @@ public class Position extends DomainEntity {
 
 	public void setProblems(final Collection<Problem> problems) {
 		this.problems = problems;
+	}
+
+	public void setAuditor(final Auditor auditor) {
+		this.auditor = auditor;
 	}
 }

@@ -33,6 +33,9 @@ public class AuditService {
 	private ActorService	actorService;
 
 	@Autowired
+	private PositionService	positionService;
+
+	@Autowired
 	private Validator		validator;
 
 
@@ -114,6 +117,12 @@ public class AuditService {
 
 		//Assertion that the user modifying this task has the correct privilege.
 		Assert.isTrue(this.actorService.findByPrincipal().getId() == result.getAuditor().getId());
+
+		//Assertion that is an available position
+		Assert.isTrue(this.positionService.getPositionsForAuditor(this.actorService.findByPrincipal().getId()).contains(result.getPosition()));
+
+		//Assertion that is an available position on final mode and not cancelled
+		Assert.isTrue(this.positionService.getPublicPositions().contains(result.getPosition()));
 
 		return result;
 

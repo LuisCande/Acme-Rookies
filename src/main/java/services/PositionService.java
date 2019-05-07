@@ -20,6 +20,7 @@ import org.springframework.validation.Validator;
 
 import repositories.PositionRepository;
 import security.Authority;
+import domain.Auditor;
 import domain.Company;
 import domain.Finder;
 import domain.Message;
@@ -65,6 +66,7 @@ public class PositionService {
 		p.setProblems(new ArrayList<Problem>());
 		p.setFinalMode(false);
 		p.setCancelled(false);
+		p.setAuditor(null);
 
 		return p;
 	}
@@ -184,6 +186,22 @@ public class PositionService {
 	}
 	//Other methods
 
+	//Self-Assign
+
+	public void selfAssign(final int varId) {
+		Assert.notNull(varId);
+		final Position pos = this.findOne(varId);
+
+		//Assertion the position is not settled in
+		Assert.isTrue(pos.getAuditor() == null);
+
+		//Assertion position is on final mode and not cancelled
+		Assert.isTrue(this.getPublicPositions().contains(pos));
+
+		pos.setAuditor((Auditor) this.actorService.findByPrincipal());
+		this.positionRepository.save(pos);
+
+	}
 	//Generates the first half of the unique tickers.
 	private String generateName(final Position p) {
 		final String name = p.getCompany().getCommercialName();
@@ -347,6 +365,11 @@ public class PositionService {
 	//The average, the minimum, the maximum, and the standard deviation of the number of sponsorships per position
 	public Double[] avgMinMaxStddevSponsorshipsPerPosition() {
 		return this.positionRepository.avgMinMaxStddevSponsorshipsPerPosition();
+	}
+
+	//Returns the available positions for a certain auditor
+	public Collection<Position> getPositionsForAuditor(final int id) {
+		return this.positionRepository.getPositionsForAuditor(id);
 	}
 
 }

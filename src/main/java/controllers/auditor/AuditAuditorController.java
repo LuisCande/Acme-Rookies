@@ -147,7 +147,7 @@ public class AuditAuditorController extends AbstractController {
 	protected ModelAndView createEditModelAndView(final Audit audit, final String messageCode) {
 		ModelAndView result;
 
-		final Collection<Position> positions = this.positionService.getPublicPositions();
+		final Collection<Position> positions = this.positionService.getPositionsForAuditor(this.actorService.findByPrincipal().getId());
 
 		result = new ModelAndView("audit/edit");
 		result.addObject("audit", audit);

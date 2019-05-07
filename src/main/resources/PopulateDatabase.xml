@@ -566,15 +566,6 @@
 		<property name="position" ref="position1" />
 	</bean>	
 	
-	<bean id="audit6" class="domain.Audit">
-		<property name="moment" value="2018/11/20 10:00" />
-		<property name="text" value="Little definition of requirements" />
-		<property name="score" value="3.5" />
-		<property name="finalMode" value="false" />
-		<property name="auditor" ref="auditor2" />
-		<property name="position" ref="position3" />
-	</bean>	
-	
 	<!-- Item beans -->
 	
 	<bean id="item1" class="domain.Item">
@@ -651,6 +642,7 @@
 		<property name="offeredSalary" value="1000.0" />
 		<property name="cancelled" value="false"/>
 		<property name="finalMode" value="true"/>
+		<property name="auditor" ref="auditor1"/>
  		<property name="company" ref="company1" />
  		<property name="problems">
 			<list>
@@ -671,6 +663,7 @@
 		<property name="offeredSalary" value="6000.0" />
 		<property name="cancelled" value="false"/> 
 		<property name="finalMode" value="false"/>
+		<property name="auditor"> <null /></property>
  		<property name="company" ref="company1" />
 		<property name="problems">
 			<list>
@@ -690,6 +683,7 @@
 		<property name="offeredSalary" value="10000.0" /> 
 		<property name="cancelled" value="true"/>
 		<property name="finalMode" value="true"/>
+		<property name="auditor"> <null /></property>
 		<property name="company" ref="company2" />
 		<property name="problems">
 			<list>
@@ -710,6 +704,7 @@
 		<property name="offeredSalary" value="1500.0" /> 
 		<property name="cancelled" value="false"/>
 		<property name="finalMode" value="false"/>
+		<property name="auditor"> <null /></property>
 		<property name="company" ref="company1" />
 		<property name="problems">
 			<list>
@@ -728,6 +723,7 @@
 		<property name="offeredSalary" value="1600.0" /> 
 		<property name="cancelled" value="false"/>
 		<property name="finalMode" value="true"/>
+		<property name="auditor"> <null /></property>
 		<property name="company" ref="company3" />
 		<property name="problems">
 			<list>
