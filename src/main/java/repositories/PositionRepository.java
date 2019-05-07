@@ -64,4 +64,7 @@ public interface PositionRepository extends JpaRepository<Position, Integer> {
 	@Query("select avg((select count(s) from Sponsorship s where s.position.id=p.id)*1.), min((select count(s) from Sponsorship s where s.position.id=p.id)*1.), max((select count(s) from Sponsorship s where s.position.id=p.id)*1.), stddev((select count(s) from Sponsorship s where s.position.id=p.id)*1.) from Position p")
 	Double[] avgMinMaxStddevSponsorshipsPerPosition();
 
+	//Returns the available positions for a certain auditor
+	@Query("select p from Position p where p.auditor.id=?1")
+	Collection<Position> getPositionsForAuditor(int id);
 }

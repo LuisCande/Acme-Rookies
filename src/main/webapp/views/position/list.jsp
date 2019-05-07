@@ -28,6 +28,7 @@
 <spring:message code="position.display" var="display" />
 <spring:message code="position.company" var="company" />
 <spring:message code="position.return" var="msgReturn" />
+<spring:message code="position.selfAssign" var="selfAssign" />
 <spring:message code="position.edit" var="edit" />
 <spring:message code="position.delete" var="delete" />
 <spring:message code="position.applications" var="applications" />
@@ -94,6 +95,12 @@
 			value="${row.id}"/>
 	</spring:url>
 	
+	<spring:url var="selfAssignUrl"
+		value="position/auditor/selfAssign.do">
+		<spring:param name="varId"
+			value="${row.id}"/>
+	</spring:url>
+	
 	<display:column title="${company}">
 			<a href="${companyUrl}"><jstl:out value="${row.company.commercialName}" /></a>
 	</display:column>
@@ -101,6 +108,15 @@
 	<display:column title="${display}">
 			<a href="${displayUrl}"><jstl:out value="${display}" /></a>
 	</display:column>
+	
+	<security:authorize access="hasRole('AUDITOR')">
+	<display:column title="${selfAssign}">
+		<jstl:if test="${empty row.auditor}">
+			<a href="${selfAssignUrl}"><jstl:out value="${selfAssign}" /></a>
+		</jstl:if>
+	</display:column>
+	</security:authorize>
+	
 	
 	<security:authorize access="hasRole('COMPANY')">
 	<display:column title="${cancel}">
