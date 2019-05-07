@@ -28,7 +28,7 @@
 <spring:message code="curriculum.delete" var="delete" />
 <spring:message code="curriculum.confirm.delete" var="confirm" />
 
-<security:authorize access="hasRole('HACKER')">
+<security:authorize access="hasRole('ROOKIE')">
 
 <%-- Listing grid --%>
 
@@ -43,7 +43,7 @@
 	<%-- Links towards display, apply, edit and cancel views --%>
 	
 	<spring:url var="displayUrl"
-		value="curriculum/hacker/display.do">
+		value="curriculum/rookie/display.do">
 		<spring:param name="varId"
 			value="${row.id}"/>
 	</spring:url>
@@ -53,7 +53,7 @@
 	</display:column>
 	
 	<spring:url var="deleteUrl"
-		value="curriculum/hacker/delete.do">
+		value="curriculum/rookie/delete.do">
 		<spring:param name="varId"
 			value="${row.id}"/>
 	</spring:url>
@@ -66,7 +66,7 @@
 
 
 	<spring:url var="createUrl"
-		value="curriculum/hacker/create.do">
+		value="curriculum/rookie/create.do">
 	</spring:url>
 	<a href="${createUrl}"><jstl:out value="${msgCreate}" /></a>
 </security:authorize>

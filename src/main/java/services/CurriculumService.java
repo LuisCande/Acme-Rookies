@@ -15,10 +15,10 @@ import org.springframework.validation.Validator;
 import repositories.CurriculumRepository;
 import domain.Curriculum;
 import domain.EducationData;
-import domain.Hacker;
 import domain.MiscellaneousData;
 import domain.PersonalData;
 import domain.PositionData;
+import domain.Rookie;
 
 @Service
 @Transactional
@@ -55,8 +55,8 @@ public class CurriculumService {
 	public Curriculum create() {
 		final Curriculum c = new Curriculum();
 
-		final Hacker h = (Hacker) this.actorService.findByPrincipal();
-		c.setHacker(h);
+		final Rookie h = (Rookie) this.actorService.findByPrincipal();
+		c.setRookie(h);
 
 		return c;
 	}
@@ -75,7 +75,7 @@ public class CurriculumService {
 		Assert.notNull(c);
 
 		//Assertion that the user modifying this curriculum has the correct privilege.
-		Assert.isTrue(this.actorService.findByPrincipal().getId() == c.getHacker().getId());
+		Assert.isTrue(this.actorService.findByPrincipal().getId() == c.getRookie().getId());
 
 		final Curriculum saved = this.curriculumRepository.save(c);
 
@@ -86,7 +86,7 @@ public class CurriculumService {
 		Assert.notNull(c);
 
 		//Assertion that the user deleting this curriculum has the correct privilege.
-		Assert.isTrue(this.actorService.findByPrincipal().getId() == c.getHacker().getId());
+		Assert.isTrue(this.actorService.findByPrincipal().getId() == c.getRookie().getId());
 
 		if (this.getPersonalDataForCurriculum(c.getId()) != null)
 			this.personalDataService.delete(this.getPersonalDataForCurriculum(c.getId()));
@@ -122,7 +122,7 @@ public class CurriculumService {
 			throw new ValidationException();
 
 		//Assertion that the user modifying this curriculum has the correct privilege.
-		Assert.isTrue(this.actorService.findByPrincipal().getId() == c.getHacker().getId());
+		Assert.isTrue(this.actorService.findByPrincipal().getId() == c.getRookie().getId());
 
 		return result;
 
@@ -133,7 +133,7 @@ public class CurriculumService {
 	public Curriculum copy(final Curriculum orig) {
 
 		//Assertion the user copying this curriculum has the correct privilege
-		Assert.isTrue(orig.getHacker().getId() == this.actorService.findByPrincipal().getId());
+		Assert.isTrue(orig.getRookie().getId() == this.actorService.findByPrincipal().getId());
 
 		final Curriculum ini = this.create();
 		final Curriculum copy = this.save(ini);
@@ -148,9 +148,9 @@ public class CurriculumService {
 
 	//Time for motion and queries
 
-	//Retrieves the curriculum for a certain hacker
-	public Collection<Curriculum> getCurriculumsForHacker(final int id) {
-		return this.curriculumRepository.getCurriculumsForHacker(id);
+	//Retrieves the curriculum for a certain rookie
+	public Collection<Curriculum> getCurriculumsForRookie(final int id) {
+		return this.curriculumRepository.getCurriculumsForRookie(id);
 	}
 
 	//Listing of personal datas for a certain curriculum
@@ -172,9 +172,9 @@ public class CurriculumService {
 		return this.curriculumRepository.getMiscellaneousDataForCurriculum(id);
 	}
 
-	//The minimum, the maximum, the average, and the standard deviation of the number of curricula per hacker
-	public Double[] minMaxAvgStddevCurriculaPerHacker() {
-		return this.curriculumRepository.minMaxAvgStddevCurriculaPerHacker();
+	//The minimum, the maximum, the average, and the standard deviation of the number of curricula per rookie
+	public Double[] minMaxAvgStddevCurriculaPerRookie() {
+		return this.curriculumRepository.minMaxAvgStddevCurriculaPerRookie();
 	}
 
 }

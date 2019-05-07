@@ -11,17 +11,17 @@ import javax.persistence.ManyToOne;
 public class Curriculum extends DomainEntity {
 
 	//Attributes
-	private Hacker	hacker;
+	private Rookie	rookie;
 
 
 	//Getters
 	@ManyToOne(optional = false)
-	public Hacker getHacker() {
-		return this.hacker;
+	public Rookie getRookie() {
+		return this.rookie;
 	}
 
 	//Setters
-	public void setHacker(final Hacker hacker) {
-		this.hacker = hacker;
+	public void setRookie(final Rookie rookie) {
+		this.rookie = rookie;
 	}
 }

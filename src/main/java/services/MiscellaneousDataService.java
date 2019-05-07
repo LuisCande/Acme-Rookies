@@ -62,7 +62,7 @@ public class MiscellaneousDataService {
 		Assert.notNull(er);
 
 		//Assertion that the user modifying this education record has the correct privilege.
-		Assert.isTrue(this.actorService.findByPrincipal().getId() == er.getCurriculum().getHacker().getId());
+		Assert.isTrue(this.actorService.findByPrincipal().getId() == er.getCurriculum().getRookie().getId());
 
 		final MiscellaneousData saved = this.miscellaneousDataRepository.save(er);
 
@@ -73,7 +73,7 @@ public class MiscellaneousDataService {
 		Assert.notNull(er);
 
 		//Assertion that the user deleting this education record has the correct privilege.
-		Assert.isTrue(this.actorService.findByPrincipal().getId() == er.getCurriculum().getHacker().getId());
+		Assert.isTrue(this.actorService.findByPrincipal().getId() == er.getCurriculum().getRookie().getId());
 
 		this.miscellaneousDataRepository.delete(er);
 	}
@@ -99,7 +99,7 @@ public class MiscellaneousDataService {
 			throw new ValidationException();
 
 		//Assertion that the user modifying this task has the correct privilege.
-		Assert.isTrue(this.actorService.findByPrincipal().getId() == result.getCurriculum().getHacker().getId());
+		Assert.isTrue(this.actorService.findByPrincipal().getId() == result.getCurriculum().getRookie().getId());
 
 		return result;
 

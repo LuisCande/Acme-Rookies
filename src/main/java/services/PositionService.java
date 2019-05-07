@@ -98,11 +98,7 @@ public class PositionService {
 
 		final Position saved = this.positionRepository.save(p);
 
-		//TODO Broadcast al guardar finalMode = true la position, necesario? - Sending notification to members
-		//		if (saved.getFinalMode() == true)
-		//			this.messageService.positionPublished(saved);
-
-		this.notificationForHacker(saved);
+		this.notificationForRookie(saved);
 
 		return saved;
 
@@ -241,7 +237,7 @@ public class PositionService {
 		return res;
 	}
 
-	public void notificationForHacker(final Position p) {
+	public void notificationForRookie(final Position p) {
 		Assert.notNull(p);
 
 		final Collection<Finder> finders = this.finderService.findAll();
@@ -258,7 +254,7 @@ public class PositionService {
 				positions = this.finderService.find(f);
 
 				if (positions.contains(p))
-					this.messageService.send(msg, this.finderService.getHackerByFinder(f.getId()));
+					this.messageService.send(msg, this.finderService.getRookieByFinder(f.getId()));
 			}
 
 	}
@@ -319,9 +315,9 @@ public class PositionService {
 		return this.positionRepository.avgMinMaxStddevOfferedSalaries();
 	}
 
-	//Positions which a hacker can do applications
-	public Collection<Position> positionsForRequestsByHacker(final int id) {
-		return this.positionRepository.positionsForRequestsByHacker(id);
+	//Positions which a rookie can do applications
+	public Collection<Position> positionsForRequestsByRookie(final int id) {
+		return this.positionRepository.positionsForRequestsByRookie(id);
 	}
 
 	//The best and the worst position in terms of salary

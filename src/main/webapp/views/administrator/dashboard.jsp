@@ -45,7 +45,7 @@
   		
   		<tr>
     		<td><jstl:out value="${queryc2}" /></td>
-    		<td><jstl:out value="${avgMinMaxStddevApplicationsPerHacker}" /></td> 
+    		<td><jstl:out value="${avgMinMaxStddevApplicationsPerRookie}" /></td> 
   		</tr>
   		
   		<tr>
@@ -55,7 +55,7 @@
 
   		<tr>
     		<td><jstl:out value="${queryc4}" /></td>
-    		<td><jstl:out value="${hackersWithMoreApplications}" /></td> 
+    		<td><jstl:out value="${rookiesWithMoreApplications}" /></td> 
   		</tr>
   		
   		<tr>
@@ -71,7 +71,7 @@
   		
     	<tr>
     		<td><jstl:out value="${queryb1}" /></td>
-    		<td><jstl:out value="${minMaxAvgStddevCurriculaPerHacker}" /></td> 
+    		<td><jstl:out value="${minMaxAvgStddevCurriculaPerRookie}" /></td> 
   		</tr>
   		
   		<tr>

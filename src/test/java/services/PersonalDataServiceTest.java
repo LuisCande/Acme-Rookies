@@ -41,37 +41,37 @@ public class PersonalDataServiceTest extends AbstractTest {
 			//Total sentence coverage : Coverage 94.1% | Covered Instructions 96 | Missed Instructions 6 | Total Instructions 102
 
 			{
-				"hacker1", null, null, "create", null
+				"rookie1", null, null, "create", null
 			},
 			/*
 			 * 
-			 * Positive test: A hacker registers a new personalData
-			 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a hacker must be able
+			 * Positive test: A rookie registers a new personalData
+			 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a rookie must be able
 			 * to: Manage his or her curricula , which includes listing, showing, creating, updating, and deleting them.
 			 * Data coverage : We created a new personalData with valid data.
-			 * Exception expected: None. A hacker can create his personalData.
+			 * Exception expected: None. A rookie can create his personalData.
 			 */{
-				"hacker1", null, "personalData1", "edit", null
+				"rookie1", null, "personalData1", "edit", null
 			},
 			/*
 			 * 
-			 * Positive test: A hacker edit his personalData
-			 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a hacker must be able
+			 * Positive test: A rookie edit his personalData
+			 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a rookie must be able
 			 * to: Manage his or her curricula , which includes listing, showing, creating, updating, and deleting them.
 			 * Data coverage : We created a new personalData with valid data.
-			 * Exception expected: None. A hacker can edit his personalData.
+			 * Exception expected: None. A rookie can edit his personalData.
 			 */
 
 			{
-				"hacker1", null, "personalData1", "delete", null
+				"rookie1", null, "personalData1", "delete", null
 			},
 		/*
 		 * 
-		 * Positive test: A hacker delete his personalData
-		 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a hacker must be able
+		 * Positive test: A rookie delete his personalData
+		 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a rookie must be able
 		 * to: Manage his or her curricula , which includes listing, showing, creating, updating, and deleting them.
 		 * Data coverage : We tried to delete a personalData.
-		 * Exception expected: None. A hacker can delete his personalData.
+		 * Exception expected: None. A rookie can delete his personalData.
 		 */
 
 		};
@@ -93,37 +93,37 @@ public class PersonalDataServiceTest extends AbstractTest {
 			//Total Sentence Coverage: Coverage 94.9% | Covered Instructions 112 | Missed Instructions 6 | Total Instructions 118
 
 			{
-				"hacker1", "", null, "createNegative", ConstraintViolationException.class
+				"rookie1", "", null, "createNegative", ConstraintViolationException.class
 			},
 			/*
-			 * Negative test: A hacker tries to create a personalData
-			 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a hacker must be able
+			 * Negative test: A rookie tries to create a personalData
+			 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a rookie must be able
 			 * to: Manage his or her curricula , which includes listing, showing, creating, updating, and deleting them.
 			 * Data coverage: We created a personalData with 4 out of 5 valid parameters.
 			 * Exception expected: ConstraintViolationException. Full name cannot be blank.
 			 */
 
 			{
-				"hacker2", null, "personalData1", "edit", IllegalArgumentException.class
+				"rookie2", null, "personalData1", "edit", IllegalArgumentException.class
 			},
 
 			/*
-			 * Negative test: A hacker tries to edit a personalData that not owns.
-			 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a hacker must be able
+			 * Negative test: A rookie tries to edit a personalData that not owns.
+			 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a rookie must be able
 			 * to: Manage his or her curricula , which includes listing, showing, creating, updating, and deleting them.
 			 * Data coverage : From 3 editable attributes we tried to edit 1 attribute (fullName) with a user that is not the owner.
-			 * Exception expected: IllegalArgumentException. A Hacker can not edit personalDatas from another hacker.
+			 * Exception expected: IllegalArgumentException. A Rookie can not edit personalDatas from another rookie.
 			 */
 
 			{
-				"hacker2", null, "personalData1", "delete", IllegalArgumentException.class
+				"rookie2", null, "personalData1", "delete", IllegalArgumentException.class
 			},
 		/*
-		 * Negative test: A hacker tries to delete a personalData that not owns.
-		 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a hacker must be able
+		 * Negative test: A rookie tries to delete a personalData that not owns.
+		 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a rookie must be able
 		 * to: Manage his or her curricula , which includes listing, showing, creating, updating, and deleting them.
 		 * Data coverage : We tried to delete a personalData with a user that is not the owner.
-		 * Exception expected: IllegalArgumentException. A Hacker can not delete personalDatas from another hacker.
+		 * Exception expected: IllegalArgumentException. A Rookie can not delete personalDatas from another rookie.
 		 */
 
 		};

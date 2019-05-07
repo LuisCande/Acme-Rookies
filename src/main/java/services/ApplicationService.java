@@ -16,7 +16,7 @@ import org.springframework.validation.Validator;
 import repositories.ApplicationRepository;
 import domain.Application;
 import domain.Curriculum;
-import domain.Hacker;
+import domain.Rookie;
 import domain.Status;
 
 @Service
@@ -57,8 +57,8 @@ public class ApplicationService {
 
 		a.setStatus(Status.PENDING);
 
-		final Hacker hacker = (Hacker) this.actorService.findByPrincipal();
-		a.setHacker(hacker);
+		final Rookie rookie = (Rookie) this.actorService.findByPrincipal();
+		a.setRookie(rookie);
 		a.setMoment(new Date(System.currentTimeMillis() - 1));
 		return a;
 	}
@@ -79,7 +79,7 @@ public class ApplicationService {
 		Application saved;
 
 		//Assertion that the user modifying this application has the correct privilege.
-		Assert.isTrue(this.actorService.findByPrincipal().getId() == application.getHacker().getId() || this.actorService.findByPrincipal().getId() == application.getPosition().getCompany().getId());
+		Assert.isTrue(this.actorService.findByPrincipal().getId() == application.getRookie().getId() || this.actorService.findByPrincipal().getId() == application.getPosition().getCompany().getId());
 
 		if (application.getId() == 0) {
 			final Curriculum orig = application.getCurriculum();
@@ -138,7 +138,7 @@ public class ApplicationService {
 			result.setPosition(app.getPosition());
 
 			//Assertion that the position provided is valid
-			Assert.isTrue(this.positionService.positionsForRequestsByHacker(this.actorService.findByPrincipal().getId()).contains(result.getPosition()));
+			Assert.isTrue(this.positionService.positionsForRequestsByRookie(this.actorService.findByPrincipal().getId()).contains(result.getPosition()));
 
 			result.setProblem(this.problemService.randomProblemInFinalModeByPosition(app.getPosition().getId()));
 		} else {
@@ -155,10 +155,10 @@ public class ApplicationService {
 			throw new ValidationException();
 
 		//Assertion that the user modifying this request has the correct privilege.
-		Assert.isTrue(this.actorService.findByPrincipal().getId() == result.getHacker().getId() || this.actorService.findByPrincipal().getId() == result.getPosition().getCompany().getId());
+		Assert.isTrue(this.actorService.findByPrincipal().getId() == result.getRookie().getId() || this.actorService.findByPrincipal().getId() == result.getPosition().getCompany().getId());
 
 		//Assertion the user copying this curriculum has the correct privilege
-		Assert.isTrue(result.getCurriculum().getHacker().getId() == this.actorService.findByPrincipal().getId());
+		Assert.isTrue(result.getCurriculum().getRookie().getId() == this.actorService.findByPrincipal().getId());
 
 		return result;
 
@@ -166,19 +166,19 @@ public class ApplicationService {
 
 	//Other methods
 
-	//The applications given a hacker id
-	public Collection<Application> applicationsOfAHacker(final int id) {
-		return this.applicationRepository.applicationsOfAHacker(id);
+	//The applications given a rookie id
+	public Collection<Application> applicationsOfARookie(final int id) {
+		return this.applicationRepository.applicationsOfARookie(id);
 	}
 
-	//The applications given a hacker id ordered by status
-	public Collection<Application> applicationsOfAHackerOrderedByStatus(final int id) {
-		return this.applicationRepository.applicationsOfAHackerOrderedByStatus(id);
+	//The applications given a rookie id ordered by status
+	public Collection<Application> applicationsOfARookieOrderedByStatus(final int id) {
+		return this.applicationRepository.applicationsOfARookieOrderedByStatus(id);
 	}
 
-	//The average, the minimum, the maximum, and the standard deviation of the number of applications per hacker
-	public Double[] avgMinMaxStddevApplicationsPerHacker() {
-		return this.applicationRepository.avgMinMaxStddevApplicationsPerHacker();
+	//The average, the minimum, the maximum, and the standard deviation of the number of applications per rookie
+	public Double[] avgMinMaxStddevApplicationsPerRookie() {
+		return this.applicationRepository.avgMinMaxStddevApplicationsPerRookie();
 	}
 
 	//The applications given a position id

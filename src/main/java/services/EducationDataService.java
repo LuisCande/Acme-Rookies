@@ -62,7 +62,7 @@ public class EducationDataService {
 		Assert.notNull(er);
 
 		//Assertion that the user modifying this education record has the correct privilege.
-		Assert.isTrue(this.actorService.findByPrincipal().getId() == er.getCurriculum().getHacker().getId());
+		Assert.isTrue(this.actorService.findByPrincipal().getId() == er.getCurriculum().getRookie().getId());
 
 		//Assertion that the start date is before end date.
 		Assert.isTrue(er.getStartDate().before(er.getEndDate()));
@@ -76,7 +76,7 @@ public class EducationDataService {
 		Assert.notNull(er);
 
 		//Assertion that the user deleting this education record has the correct privilege.
-		Assert.isTrue(this.actorService.findByPrincipal().getId() == er.getCurriculum().getHacker().getId());
+		Assert.isTrue(this.actorService.findByPrincipal().getId() == er.getCurriculum().getRookie().getId());
 
 		this.educationDataRepository.delete(er);
 	}
@@ -105,7 +105,7 @@ public class EducationDataService {
 			throw new ValidationException();
 
 		//Assertion that the user modifying this task has the correct privilege.
-		Assert.isTrue(this.actorService.findByPrincipal().getId() == result.getCurriculum().getHacker().getId());
+		Assert.isTrue(this.actorService.findByPrincipal().getId() == result.getCurriculum().getRookie().getId());
 
 		//Assertion that the start date is before end date.
 		Assert.isTrue(result.getStartDate().before(result.getEndDate()));

@@ -19,7 +19,9 @@ import org.springframework.validation.Validator;
 import repositories.CompanyRepository;
 import security.Authority;
 import security.UserAccount;
+import domain.Audit;
 import domain.Company;
+import domain.Position;
 import forms.FormObjectCompany;
 
 @Service
@@ -35,6 +37,12 @@ public class CompanyService {
 
 	@Autowired
 	private ActorService		actorService;
+
+	@Autowired
+	private PositionService		positionService;
+
+	@Autowired
+	private AuditService		auditService;
 
 	@Autowired
 	private Validator			validator;
@@ -95,6 +103,17 @@ public class CompanyService {
 		}
 
 		return saved2;
+	}
+
+	public Company saveAdmin(final Company company) {
+
+		final Authority a = new Authority();
+		a.setAuthority(Authority.ADMIN);
+
+		//Assertion that the phone is valid according to the checkPhone method.
+		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(a));
+
+		return this.companyRepository.save(company);
 	}
 
 	public void delete(final Company company) {
@@ -204,6 +223,32 @@ public class CompanyService {
 
 	public void flush() {
 		this.companyRepository.flush();
+	}
+	//Compute score for all
+	public void computeScoreForAll() {
+		final Collection<Company> companies = this.findAll();
+		if (!companies.isEmpty())
+			for (final Company c : companies)
+				this.computeScore(c);
+	}
+	//Compute score
+	public void computeScore(final Company company) {
+		final Collection<Position> positions = this.positionService.getPublicPositionsForCompany(company.getId());
+		Double score = 0.0;
+		for (final Position p : positions)
+			if (!this.auditService.getAuditsForPosition(p.getId()).isEmpty())
+				score = score + this.createScore(this.auditService.getAuditsForPosition(p.getId()));
+
+		company.setAuditScore(score);
+		this.saveAdmin(company);
+	}
+
+	private Double createScore(final Collection<Audit> audits) {
+		Double score = 0.0;
+		final Integer tam = audits.size();
+		for (final Audit a : audits)
+			score = score + a.getScore();
+		return (score / tam) / 10;
 	}
 
 	//The companies that have offered more positions

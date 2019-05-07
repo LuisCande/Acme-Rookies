@@ -33,8 +33,8 @@ import services.CompanyService;
 import services.ConfigurationService;
 import services.CurriculumService;
 import services.FinderService;
-import services.HackerService;
 import services.PositionService;
+import services.RookieService;
 import controllers.AbstractController;
 import domain.Actor;
 import domain.Administrator;
@@ -69,7 +69,7 @@ public class AdministratorController extends AbstractController {
 	private AuditorService			auditorService;
 
 	@Autowired
-	private HackerService			hackerService;
+	private RookieService			rookieService;
 
 	@Autowired
 	private CurriculumService		curriculumService;
@@ -206,12 +206,12 @@ public class AdministratorController extends AbstractController {
 		result = new ModelAndView("administrator/dashboard");
 
 		result.addObject("avgMinMaxStddevPositionsPerCompany", Arrays.toString(this.positionService.avgMinMaxStddevPositionsPerCompany()));
-		result.addObject("avgMinMaxStddevApplicationsPerHacker", Arrays.toString(this.applicationService.avgMinMaxStddevApplicationsPerHacker()));
+		result.addObject("avgMinMaxStddevApplicationsPerRookie", Arrays.toString(this.applicationService.avgMinMaxStddevApplicationsPerRookie()));
 		result.addObject("companiesWithMoreOfferedPossitions", this.companyService.companiesWithMoreOfferedPossitions());
-		result.addObject("hackersWithMoreApplications", this.hackerService.hackersWithMoreApplications());
+		result.addObject("rookiesWithMoreApplications", this.rookieService.rookiesWithMoreApplications());
 		result.addObject("avgMinMaxStddevOfferedSalaries", Arrays.toString(this.positionService.avgMinMaxStddevOfferedSalaries()));
 		result.addObject("bestAndWorstPositions", this.positionService.bestAndWorstPositions());
-		result.addObject("minMaxAvgStddevCurriculaPerHacker", Arrays.toString(this.curriculumService.minMaxAvgStddevCurriculaPerHacker()));
+		result.addObject("minMaxAvgStddevCurriculaPerRookie", Arrays.toString(this.curriculumService.minMaxAvgStddevCurriculaPerRookie()));
 		result.addObject("minMaxAvgStddevResultsFinders", Arrays.toString(this.finderService.minMaxAvgStddevResultsFinders()));
 		result.addObject("ratioEmptyVersusNonEmptyFinders", this.finderService.ratioEmptyVersusNonEmptyFinders());
 
@@ -247,6 +247,18 @@ public class AdministratorController extends AbstractController {
 			result.addObject("score", score);
 		}
 		result.addObject("actor", actor);
+
+		return result;
+	}
+
+	//Compute score
+	@RequestMapping(value = "/computeScore", method = RequestMethod.GET)
+	public ModelAndView computeScore() {
+		final ModelAndView result;
+
+		this.companyService.computeScoreForAll();
+
+		result = new ModelAndView("redirect:/welcome/index.do");
 
 		return result;
 	}

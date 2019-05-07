@@ -31,7 +31,7 @@
 
 <%-- Listing grid --%>
 
-<security:authorize access="hasRole('HACKER')">
+<security:authorize access="hasRole('ROOKIE')">
 
 <display:table pagesize="5" class="displaytag" keepStatus="false"
 	name="educationDatas" requestURI="${requestURI}" id="row">
@@ -47,7 +47,7 @@
 	<%-- Links towards display, apply, edit and cancel views --%>
 	
 	<spring:url var="editUrl"
-		value="educationData/hacker/edit.do">
+		value="educationData/rookie/edit.do">
 		<spring:param name="varId"
 			value="${row.id}"/>
 	</spring:url>
@@ -57,7 +57,7 @@
 	</display:column>
 	
 	<spring:url var="displayUrl"
-		value="educationData/hacker/display.do">
+		value="educationData/rookie/display.do">
 		<spring:param name="varId"
 			value="${row.id}"/>
 	</spring:url>
@@ -69,7 +69,7 @@
 </display:table>
 
 
-	<spring:url var="createUrl" value="educationData/hacker/create.do">
+	<spring:url var="createUrl" value="educationData/rookie/create.do">
 			<spring:param name="varId" value="${curriculum.id}" />
 	</spring:url>
 	

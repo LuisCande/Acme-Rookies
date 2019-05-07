@@ -39,19 +39,19 @@
 		<security:intercept-url pattern="/welcome/**" access="permitAll" /> 
 		<security:intercept-url pattern="/company/**" access="permitAll" />
 		<security:intercept-url pattern="/position/**" access="permitAll" />
-		<security:intercept-url pattern="/hacker/**" access="permitAll" />
+		<security:intercept-url pattern="/rookie/**" access="permitAll" />
 		<security:intercept-url pattern="/provider/**" access="permitAll" />
 		<security:intercept-url pattern="/auditor/**" access="permitAll" />
 		<security:intercept-url pattern="/audit/**" access="permitAll" />
 		<security:intercept-url pattern="/item/**" access="permitAll" />
 		
-		<security:intercept-url pattern="/curriculum/**" access="hasRole('HACKER')" />
-		<security:intercept-url pattern="/personalData/**" access="hasRole('HACKER')" />
-		<security:intercept-url pattern="/positionData/**" access="hasRole('HACKER')" />
-		<security:intercept-url pattern="/educationData/**" access="hasRole('HACKER')" />
-		<security:intercept-url pattern="/miscellaneousData/**" access="hasRole('HACKER')" />
-		<security:intercept-url pattern="/application/hacker/**" access="hasRole('HACKER')" />
-		<security:intercept-url pattern="/finder/hacker/**" access="hasRole('HACKER')" />
+		<security:intercept-url pattern="/curriculum/**" access="hasRole('ROOKIE')" />
+		<security:intercept-url pattern="/personalData/**" access="hasRole('ROOKIE')" />
+		<security:intercept-url pattern="/positionData/**" access="hasRole('ROOKIE')" />
+		<security:intercept-url pattern="/educationData/**" access="hasRole('ROOKIE')" />
+		<security:intercept-url pattern="/miscellaneousData/**" access="hasRole('ROOKIE')" />
+		<security:intercept-url pattern="/application/rookie/**" access="hasRole('ROOKIE')" />
+		<security:intercept-url pattern="/finder/rookie/**" access="hasRole('ROOKIE')" />
 			
 		<security:intercept-url pattern="/message/**" access="isAuthenticated()" />
 		<security:intercept-url pattern="/socialProfile/**" access="isAuthenticated()" />

@@ -55,7 +55,7 @@
 
 <%-- For the curriculum in the list received as model, display the following information: --%>
 
-<security:authorize access="hasRole('HACKER')">
+<security:authorize access="hasRole('ROOKIE')">
 
 	<%-- Personal Data --%>
 
@@ -84,7 +84,7 @@
 	<br />
 	
 	<spring:url var="editUrl"
-		value="personalData/hacker/edit.do">
+		value="personalData/rookie/edit.do">
 		<spring:param name="varId"
 			value="${personalData.id}"/>
 	</spring:url>
@@ -96,7 +96,7 @@
 	<jstl:if test="${hasPersonalData eq false}">
 
 	<spring:url var="personalDataUrl"
-		value="personalData/hacker/create.do">
+		value="personalData/rookie/create.do">
 		<spring:param name="varId" value="${curriculum.id}" />
 	</spring:url>
 	<a href="${personalDataUrl}"><jstl:out value="${createPersonalData}" /></a>
@@ -114,7 +114,7 @@
 		<display:column property="institution" title="${institution}" />
 		<display:column property="mark" title="${mark}" />
 
-		<spring:url var="editUrl" value="educationData/hacker/edit.do">
+		<spring:url var="editUrl" value="educationData/rookie/edit.do">
 			<spring:param name="varId" value="${row.id}" />
 		</spring:url>
 
@@ -122,7 +122,7 @@
 			<a href="${editUrl}"><jstl:out value="${edit}" /></a>
 		</display:column>
 		
-		<spring:url var="deleteUrl" value="educationData/hacker/delete.do">
+		<spring:url var="deleteUrl" value="educationData/rookie/delete.do">
 			<spring:param name="varId" value="${row.id}" />
 		</spring:url>
 
@@ -130,7 +130,7 @@
 			<a href="${deleteUrl}" onclick="return confirm('${confirm}')" ><jstl:out value="${delete}" /></a>
 		</display:column>
 
-		<spring:url var="displayUrl" value="educationData/hacker/display.do">
+		<spring:url var="displayUrl" value="educationData/rookie/display.do">
 			<spring:param name="varId" value="${row.id}" />
 		</spring:url>
 
@@ -140,7 +140,7 @@
 
 	</display:table>
 	
-	<spring:url var="createEducationDataUrl" value="educationData/hacker/create.do">
+	<spring:url var="createEducationDataUrl" value="educationData/rookie/create.do">
 		<spring:param name="varId" value="${curriculum.id}" />
 	</spring:url>
 	<a href="${createEducationDataUrl}"><jstl:out value="${createEducationData}"/></a>
@@ -159,7 +159,7 @@
 		<display:column property="description" title="${description}" />
 
 
-		<spring:url var="editUrl" value="positionData/hacker/edit.do">
+		<spring:url var="editUrl" value="positionData/rookie/edit.do">
 			<spring:param name="varId" value="${row.id}" />
 		</spring:url>
 
@@ -167,7 +167,7 @@
 			<a href="${editUrl}"><jstl:out value="${edit}" /></a>
 		</display:column>
 		
-		<spring:url var="deleteUrl" value="positionData/hacker/delete.do">
+		<spring:url var="deleteUrl" value="positionData/rookie/delete.do">
 			<spring:param name="varId" value="${row.id}" />
 		</spring:url>
 
@@ -175,7 +175,7 @@
 			<a href="${deleteUrl}" onclick="return confirm('${confirm}')" ><jstl:out value="${delete}" /></a>
 		</display:column>
 
-		<spring:url var="displayUrl" value="positionData/hacker/display.do">
+		<spring:url var="displayUrl" value="positionData/rookie/display.do">
 			<spring:param name="varId" value="${row.id}" />
 		</spring:url>
 
@@ -187,7 +187,7 @@
 	
 	<br>
 	
-	<spring:url var="createPositionDataUrl" value="positionData/hacker/create.do">
+	<spring:url var="createPositionDataUrl" value="positionData/rookie/create.do">
 		<spring:param name="varId" value="${curriculum.id}" />
 	</spring:url>
 	<a href="${createPositionDataUrl}"><jstl:out value="${createPositionData}"/></a>
@@ -204,7 +204,7 @@
 		<display:column property="text" title="${text}"/>
 		<display:column property="attachments" title="${attachments}"/>
 
-		<spring:url var="editUrl" value="miscellaneousData/hacker/edit.do">
+		<spring:url var="editUrl" value="miscellaneousData/rookie/edit.do">
 			<spring:param name="varId" value="${row.id}" />
 		</spring:url>
 
@@ -212,7 +212,7 @@
 			<a href="${editUrl}"><jstl:out value="${edit}" /></a>
 		</display:column>
 		
-		<spring:url var="deleteUrl" value="miscellaneousData/hacker/delete.do">
+		<spring:url var="deleteUrl" value="miscellaneousData/rookie/delete.do">
 			<spring:param name="varId" value="${row.id}" />
 		</spring:url>
 
@@ -221,7 +221,7 @@
 		</display:column>
 		
 		<spring:url var="displayUrl"
-			value="miscellaneousData/hacker/display.do">
+			value="miscellaneousData/rookie/display.do">
 			<spring:param name="varId" value="${row.id}" />
 		</spring:url>
 
@@ -233,13 +233,13 @@
 
 	<br />
 	
-	<spring:url var="createMiscellaneousDataUrl" value="miscellaneousData/hacker/create.do">
+	<spring:url var="createMiscellaneousDataUrl" value="miscellaneousData/rookie/create.do">
 		<spring:param name="varId" value="${curriculum.id}" />
 	</spring:url>
 	<a href="${createMiscellaneousDataUrl}"><jstl:out value="${createMiscellaneousData}"/></a>
 	
 	<br>
 
-	<a href="curriculum/hacker/list.do"><jstl:out value="${msgReturn}" /></a>
+	<a href="curriculum/rookie/list.do"><jstl:out value="${msgReturn}" /></a>
 
 </security:authorize>

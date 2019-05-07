@@ -75,42 +75,42 @@
 	</bean>
 	
 	<bean id="userAccount5" class="security.UserAccount">
-		<property name="username" value="hacker1" />
-		<property name="password" value="2ba2a8ac968a7a2b0a7baa7f2fef18d2" />
+		<property name="username" value="rookie1" />
+		<property name="password" value="9701eb1802a4c63f51e1501512fbdd30" />
 		<property name="banned" value="false" />
 		<property name="inactive" value="false" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="HACKER" />
+					<property name="authority" value="ROOKIE" />
 				</bean>
 			</list>
 		</property>
 	</bean>
 	
 	<bean id="userAccount6" class="security.UserAccount">
-		<property name="username" value="hacker2" />
-		<property name="password" value="91af68b69a50a98dbc0800942540342c" />
+		<property name="username" value="rookie2" />
+		<property name="password" value="124be4fa2a59341a1d7e965ac49b2923" />
 		<property name="banned" value="false" />
 		<property name="inactive" value="false" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="HACKER" />
+					<property name="authority" value="ROOKIE" />
 				</bean>
 			</list>
 		</property>
 	</bean>
 	
 	<bean id="userAccount7" class="security.UserAccount">
-		<property name="username" value="hacker3" />
-		<property name="password" value="c6ae6edca1ad45f42e619ec91a32b636" />
+		<property name="username" value="rookie3" />
+		<property name="password" value="b723fa2fd1c2dc65d166df3e7f83e329" />
 		<property name="banned" value="false" />
 		<property name="inactive" value="false" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="HACKER" />
+					<property name="authority" value="ROOKIE" />
 				</bean>
 			</list>
 		</property>
@@ -130,7 +130,13 @@
 					<property name="authority" value="COMPANY" />
 				</bean>
 				<bean class="security.Authority">
-					<property name="authority" value="HACKER" />
+					<property name="authority" value="ROOKIE" />
+				</bean>
+				<bean class="security.Authority">
+					<property name="authority" value="PROVIDER" />
+				</bean>
+				<bean class="security.Authority">
+					<property name="authority" value="AUDITOR" />
 				</bean>
 			</list>
 		</property>
@@ -276,9 +282,9 @@
 		<property name="userAccount" ref="userAccount4" />
 	</bean>
 	
-	<!-- Hacker beans -->
+	<!-- Rookie beans -->
 	
-	<bean id="hacker1" class="domain.Hacker">
+	<bean id="rookie1" class="domain.Rookie">
 		<property name="name" value="Kristopher" />
 		<property name="surnames" value="Chapman" />
 		<property name="vatNumber" value="ATU00000122" />
@@ -294,7 +300,7 @@
 		<property name="finder" ref="finder1" />
 	</bean>
 	
-	<bean id="hacker2" class="domain.Hacker">
+	<bean id="rookie2" class="domain.Rookie">
 		<property name="name" value="Tammy" />
 		<property name="surnames" value="Sullivan" />
 		<property name="vatNumber" value="ATU00000168" />
@@ -310,7 +316,7 @@
 		<property name="finder" ref="finder2" />
 	</bean>
 	
-	<bean id="hacker3" class="domain.Hacker">
+	<bean id="rookie3" class="domain.Rookie">
 		<property name="name" value="Kevin" />
 		<property name="surnames" value="Mercado Negro" />
 		<property name="vatNumber" value="ATU00000202" />
@@ -522,10 +528,37 @@
 		<property name="finalMode" value="true" />
 		<property name="auditor" ref="auditor1" />
 		<property name="position" ref="position1" />
-	</bean>	
+	</bean>
 	
 	<bean id="audit2" class="domain.Audit">
-		<property name="moment" value="2018/10/21 13:00" />
+		<property name="moment" value="2019/02/20 13:00" />
+		<property name="text" value="This is a good work to begin" />
+		<property name="score" value="7" />
+		<property name="finalMode" value="true" />
+		<property name="auditor" ref="auditor1" />
+		<property name="position" ref="position1" />
+	</bean>	
+	
+	<bean id="audit3" class="domain.Audit">
+		<property name="moment" value="2019/02/21 13:12" />
+		<property name="text" value="This is a good work to begin" />
+		<property name="score" value="0" />
+		<property name="finalMode" value="true" />
+		<property name="auditor" ref="auditor1" />
+		<property name="position" ref="position1" />
+	</bean>	
+	
+	<bean id="audit4" class="domain.Audit">
+		<property name="moment" value="2019/02/22 11:01" />
+		<property name="text" value="This is a good work to begin" />
+		<property name="score" value="10" />
+		<property name="finalMode" value="true" />
+		<property name="auditor" ref="auditor1" />
+		<property name="position" ref="position1" />
+	</bean>	
+	
+	<bean id="audit5" class="domain.Audit">
+		<property name="moment" value="2018/10/21 13:02" />
 		<property name="text" value="Very high complexity" />
 		<property name="score" value="7.0" />
 		<property name="finalMode" value="true" />
@@ -533,7 +566,7 @@
 		<property name="position" ref="position1" />
 	</bean>	
 	
-	<bean id="audit3" class="domain.Audit">
+	<bean id="audit6" class="domain.Audit">
 		<property name="moment" value="2018/11/20 10:00" />
 		<property name="text" value="Little definition of requirements" />
 		<property name="score" value="3.5" />
@@ -617,7 +650,7 @@
 		<property name="requiredTech" value="Java, MySQL, Spring" />
 		<property name="offeredSalary" value="1000.0" />
 		<property name="cancelled" value="false"/>
-		<property name="finalMode" value="false"/>
+		<property name="finalMode" value="true"/>
  		<property name="company" ref="company1" />
  		<property name="problems">
 			<list>
@@ -715,7 +748,7 @@
 		<property name="problem" ref="problem1"/>
 		<property name="curriculum" ref="curriculum1" />
 		<property name="position" ref="position1" />
-		<property name="hacker" ref="hacker1" />
+		<property name="rookie" ref="rookie1" />
 	</bean>
 	
 	<bean id="application2" class="domain.Application">
@@ -727,7 +760,7 @@
 		<property name="problem" ref="problem4"/>
 		<property name="curriculum" ref="curriculum3" />
 		<property name="position" ref="position3" />
-		<property name="hacker" ref="hacker2" />
+		<property name="rookie" ref="rookie2" />
 	</bean>
 	
 	<bean id="application3" class="domain.Application">
@@ -739,7 +772,7 @@
 		<property name="problem" ref="problem2"/>
 		<property name="curriculum" ref="curriculum4" />
 		<property name="position" ref="position1" />
-		<property name="hacker" ref="hacker2" />
+		<property name="rookie" ref="rookie2" />
 	</bean>
 	
 	<bean id="application4" class="domain.Application">
@@ -751,7 +784,7 @@
 		<property name="problem" ref="problem6"/>
 		<property name="curriculum" ref="curriculum2" />
 		<property name="position" ref="position5" />
-		<property name="hacker" ref="hacker1" />
+		<property name="rookie" ref="rookie1" />
 	</bean>
 	
 	<!-- Problem beans -->
@@ -832,26 +865,26 @@
 	<!-- Curriculum beans -->
 	
 		<bean id="curriculum1" class="domain.Curriculum">
-		<property name="hacker" ref="hacker1" />
+		<property name="rookie" ref="rookie1" />
 		</bean>
 		
 		<bean id="curriculum2" class="domain.Curriculum">
-		<property name="hacker" ref="hacker1" />
+		<property name="rookie" ref="rookie1" />
 		</bean>
 		
 		<bean id="curriculum3" class="domain.Curriculum">
-		<property name="hacker" ref="hacker3" />
+		<property name="rookie" ref="rookie3" />
 		</bean>
 		
 		<bean id="curriculum4" class="domain.Curriculum">
-		<property name="hacker" ref="hacker3" />
+		<property name="rookie" ref="rookie3" />
 		</bean>
 		
 	<!-- Personal Data beans -->
 	
 		<bean id="personalData1" class="domain.PersonalData">
 		<property name="fullName" value="Kristopher Chapman" />
-		<property name="statement" value="I´m the best hacker in Europe" />
+		<property name="statement" value="I´m the best rookie in Europe" />
 		<property name="phoneNumber" value="668524256" />
 		<property name="gitHubProfile" value="https://www.github.com/profile123224" />
 		<property name="linkedInProfile" value="https://www.linkedin.com/profile00224" />
@@ -860,7 +893,7 @@
 	
 	<bean id="personalData2" class="domain.PersonalData">
 		<property name="fullName" value="Kristopher Chapman" />
-		<property name="statement" value="I was the best hacker in Africa" />
+		<property name="statement" value="I was the best rookie in Africa" />
 		<property name="phoneNumber" value="668204501" />
 		<property name="gitHubProfile" value="https://www.github.com/profile123423" />
 		<property name="linkedInProfile" value="https://www.linkedin.com/profile0034523" />
@@ -880,7 +913,7 @@
 	
 		<bean id="positionData1" class="domain.PositionData">
 		<property name="title" value="Position 49" />
-		<property name="description" value="I´m the 49º of Hackers National Championship" />
+		<property name="description" value="I´m the 49º of Rookies National Championship" />
 		<property name="startDate" value="2018/02/20" />
 		<property name="endDate" value="2020/03/15" />
 		<property name="curriculum" ref="curriculum1" />
@@ -888,7 +921,7 @@
 	
 	<bean id="positionData2" class="domain.PositionData">
 		<property name="title" value="Position 2" />
-		<property name="description" value="I´m the 2º of Hackers International Torneo" />
+		<property name="description" value="I´m the 2º of Rookies International Torneo" />
 		<property name="startDate" value="2015/01/15" />
 		<property name="endDate" value="2020/09/11" />
 		<property name="curriculum" ref="curriculum2" />
@@ -987,7 +1020,7 @@
 		<property name="welcomeES"
 			value="¡Bienvenidos a Acme Rookies! ¡Somos el mercado de trabajo favorito de los profesionales de las TICs!" />
 		<property name="welcomeEN"
-			value="Welcome to Acme Rookies! We're IT hacker's favourite job marketplace!" />
+			value="Welcome to Acme Rookies! We're IT rookie's favourite job marketplace!" />
 		<property name="spamWords">
 			<list>
 				<value>sex</value>
@@ -1036,21 +1069,21 @@
 		<property name="nick" value="Kristosito69" />
 		<property name="socialNetwork" value="You tube" />
 		<property name="profileLink" value="https://www.youtube.com" />
-		<property name="actor" ref="hacker1" />
+		<property name="actor" ref="rookie1" />
 	</bean>
 	
 	<bean id="socialProfile5" class="domain.SocialProfile">
 		<property name="nick" value="kristoAlphaSniper" />
 		<property name="socialNetwork" value="Twitter" />
 		<property name="profileLink" value="https://www.twitter.com" />
-		<property name="actor" ref="hacker1" />
+		<property name="actor" ref="rookie1" />
 	</bean>
 	
 	<bean id="socialProfile6" class="domain.SocialProfile">
 		<property name="nick" value="TammyGenteConLasManoArriba" />
 		<property name="socialNetwork" value="Twiter" />
 		<property name="profileLink" value="https://www.twitter.com" />
-		<property name="actor" ref="hacker2" />
+		<property name="actor" ref="rookie2" />
 	</bean>
 	
 </beans>

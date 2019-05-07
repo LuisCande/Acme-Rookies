@@ -36,37 +36,37 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 			//Total sentence coverage : Coverage 94.3% | Covered Instructions 100 | Missed Instructions 6 | Total Instructions 106
 			{
-				"hacker1", null, "curriculum1", "create", null
+				"rookie1", null, "curriculum1", "create", null
 			},
 			/*
 			 * 
-			 * Positive test: A hacker registers a new miscellaneousData
-			 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a hacker must be able
+			 * Positive test: A rookie registers a new miscellaneousData
+			 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a rookie must be able
 			 * to: Manage his or her curricula , which includes listing, showing, creating, updating, and deleting them.
 			 * Data coverage : We created a new miscellaneousData with valid data.
-			 * Exception expected: None. A hacker can edit his miscellaneousData.
+			 * Exception expected: None. A rookie can edit his miscellaneousData.
 			 */{
-				"hacker1", null, "miscellaneousData1", "edit", null
+				"rookie1", null, "miscellaneousData1", "edit", null
 			},
 
 			/*
-			 * Positive test: A hacker edit his miscellaneousData.
-			 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a hacker must be able
+			 * Positive test: A rookie edit his miscellaneousData.
+			 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a rookie must be able
 			 * to: Manage his or her curricula , which includes listing, showing, creating, updating, and deleting them.
 			 * Data coverage : From 2 editable attributes we tried to edit 1 attribute (text) with valid data.
-			 * Exception expected: None. A hacker can edit his miscellaneousDatas.
+			 * Exception expected: None. A rookie can edit his miscellaneousDatas.
 			 */
 
 			{
-				"hacker1", null, "miscellaneousData1", "delete", null
+				"rookie1", null, "miscellaneousData1", "delete", null
 			},
 		/*
 		 * 
-		 * Positive test: A hacker delete his miscellaneousData
-		 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a hacker must be able
+		 * Positive test: A rookie delete his miscellaneousData
+		 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a rookie must be able
 		 * to: Manage his or her curricula , which includes listing, showing, creating, updating, and deleting them.
 		 * Data coverage : We tried to delete a miscellaneousData.
-		 * Exception expected: None. A hacker can delete his miscellaneousData.
+		 * Exception expected: None. A rookie can delete his miscellaneousData.
 		 */
 
 		};
@@ -87,36 +87,36 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 			//Total Sentence Coverage: Coverage 95.1% | Covered Instructions 116 | Missed Instructions 6 | Total Instructions 122
 			{
-				"hacker1", "", "curriculum1", "createNegative", ConstraintViolationException.class
+				"rookie1", "", "curriculum1", "createNegative", ConstraintViolationException.class
 			},
 			/*
-			 * Negative test: A hacker tries to create a miscellaneousData
-			 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a hacker must be able
+			 * Negative test: A rookie tries to create a miscellaneousData
+			 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a rookie must be able
 			 * to: Manage his or her curricula , which includes listing, showing, creating, updating, and deleting them.
 			 * Data coverage: We created a miscellaneousData with 1 out of 2 valid parameters.
 			 * Exception expected: ConstraintViolationException. Text cannot be blank.
 			 */
 
 			{
-				"hacker2", null, "miscellaneousData1", "edit", IllegalArgumentException.class
+				"rookie2", null, "miscellaneousData1", "edit", IllegalArgumentException.class
 			},
 
 			/*
-			 * Negative test: A hacker tries to edit a miscellaneousData that not owns.
-			 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a hacker must be able
+			 * Negative test: A rookie tries to edit a miscellaneousData that not owns.
+			 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a rookie must be able
 			 * to: Manage his or her curricula , which includes listing, showing, creating, updating, and deleting them.
 			 * Data coverage : From 2 editable attributes we tried to edit 1 attribute (Text) with a user that is not the owner.
-			 * Exception expected: IllegalArgumentException. A Hacker can not edit miscellaneousDatas from another hacker.
+			 * Exception expected: IllegalArgumentException. A Rookie can not edit miscellaneousDatas from another rookie.
 			 */
 			{
-				"hacker2", null, "miscellaneousData1", "delete", IllegalArgumentException.class
+				"rookie2", null, "miscellaneousData1", "delete", IllegalArgumentException.class
 			},
 		/*
-		 * Negative test: A hacker tries to delete a miscellaneousData that not owns.
-		 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a hacker must be able
+		 * Negative test: A rookie tries to delete a miscellaneousData that not owns.
+		 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a rookie must be able
 		 * to: Manage his or her curricula , which includes listing, showing, creating, updating, and deleting them.
 		 * Data coverage : We tried to delete a miscellaneousData with a user that is not the owner.
-		 * Exception expected: IllegalArgumentException. A Hacker can not delete miscellaneousDatas from another hacker.
+		 * Exception expected: IllegalArgumentException. A Rookie can not delete miscellaneousDatas from another rookie.
 		 */
 		};
 

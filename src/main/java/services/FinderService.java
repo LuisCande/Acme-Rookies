@@ -14,8 +14,8 @@ import repositories.FinderRepository;
 import security.Authority;
 import domain.Actor;
 import domain.Finder;
-import domain.Hacker;
 import domain.Position;
+import domain.Rookie;
 
 @Service
 @Transactional
@@ -32,7 +32,7 @@ public class FinderService {
 	private ActorService			actorService;
 
 	@Autowired
-	private HackerService			hackerService;
+	private RookieService			rookieService;
 
 	@Autowired
 	private PositionService			positionService;
@@ -66,9 +66,9 @@ public class FinderService {
 		f.setPositions(f.getPositions());
 		f.setMoment(new Date(System.currentTimeMillis() - 1));
 		final Finder saved = this.finderRepository.save(f);
-		final Hacker h = this.hackerService.hackerByFinder(f.getId());
+		final Rookie h = this.rookieService.rookieByFinder(f.getId());
 		h.setFinder(f);
-		this.hackerService.save(h);
+		this.rookieService.save(h);
 
 		return saved;
 	}
@@ -77,7 +77,7 @@ public class FinderService {
 		Assert.notNull(f);
 
 		//Assertion that the user deleting this finder has the correct privilege.
-		Assert.isTrue(this.actorService.findByPrincipal().getId() == this.hackerService.hackerByFinder(f.getId()).getId());
+		Assert.isTrue(this.actorService.findByPrincipal().getId() == this.rookieService.rookieByFinder(f.getId()).getId());
 
 		this.finderRepository.delete(f);
 	}
@@ -85,17 +85,17 @@ public class FinderService {
 	public Finder findPrincipalFinder() {
 		final Actor a = this.actorService.findByPrincipal();
 		final Authority auth = new Authority();
-		auth.setAuthority(Authority.HACKER);
+		auth.setAuthority(Authority.ROOKIE);
 		Assert.isTrue(a.getUserAccount().getAuthorities().contains(auth));
 
-		final Hacker h = (Hacker) this.actorService.findOne(a.getId());
+		final Rookie h = (Rookie) this.actorService.findOne(a.getId());
 		Finder fd = new Finder();
 		if (h.getFinder() == null) {
 			fd = this.create();
 			fd.setPositions(this.find(fd));
 			final Finder saved = this.finderRepository.save(fd);
 			h.setFinder(saved);
-			this.hackerService.save(h);
+			this.rookieService.save(h);
 			return saved;
 		} else
 			return h.getFinder();
@@ -139,9 +139,9 @@ public class FinderService {
 		return results;
 	}
 
-	//Returns a certain Hacker given his finder id
-	public Hacker getHackerByFinder(final int id) {
-		return this.finderRepository.getHackerByFinder(id);
+	//Returns a certain Rookie given his finder id
+	public Rookie getRookieByFinder(final int id) {
+		return this.finderRepository.getRookieByFinder(id);
 	}
 
 	//The minimum, the maximum, the average, and the standard deviation of the number of results in the finders.

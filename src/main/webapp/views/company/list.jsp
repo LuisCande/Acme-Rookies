@@ -58,11 +58,11 @@
 	</spring:url>
 	
 
-	<display:column>
+	<display:column title="${positions}">
 			<a href="${positionsUrl}"><jstl:out value="${positions}" /></a>
 	</display:column>
 	
-	<display:column>
+	<display:column title="${display}">
 			<a href="${displayUrl}"><jstl:out value="${display}" /></a>
 	</display:column>
 

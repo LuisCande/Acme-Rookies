@@ -36,7 +36,7 @@
 <spring:message code="personalData.cancel" var="cancel" />
 <spring:message code="personalData.confirm" var="confirm" />
 
-<security:authorize access="hasRole('HACKER')">
+<security:authorize access="hasRole('ROOKIE')">
 
 	<form:form action="${requestURI}" modelAttribute="personalData">
 
@@ -80,7 +80,7 @@
 				onclick="return confirm('${confirm}')" />&nbsp;
 	</jstl:if>
 
-		<acme:cancel url="curriculum/hacker/list.do" code="personalData.cancel" />
+		<acme:cancel url="curriculum/rookie/list.do" code="personalData.cancel" />
 
 	</form:form>
 

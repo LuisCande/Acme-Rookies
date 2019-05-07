@@ -47,7 +47,7 @@ public class CompanyServiceTest extends AbstractTest {
 			/*
 			 * 
 			 * Positive test: An user registers as a new company
-			 * Requisite tested: Functional requirement - 7.1. An actor who is not authenticated must be able to:Register to the system as a company or a hacker
+			 * Requisite tested: Functional requirement - 7.1. An actor who is not authenticated must be able to:Register to the system as a company or a rookie
 			 * Data coverage : We created a new company with valid data.
 			 * Exception expected: None. A company can edit his data.
 			 */{

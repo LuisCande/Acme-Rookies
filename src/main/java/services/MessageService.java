@@ -21,8 +21,8 @@ import domain.Application;
 import domain.Company;
 import domain.Configuration;
 import domain.Finder;
-import domain.Hacker;
 import domain.Message;
+import domain.Rookie;
 import domain.Status;
 
 @Service
@@ -161,12 +161,12 @@ public class MessageService {
 			final Company company = p.getPosition().getCompany();
 			this.send(msg, company);
 		} else if (p.getStatus() == Status.ACCEPTED || p.getStatus() == Status.REJECTED) {
-			final Hacker h = p.getHacker();
+			final Rookie h = p.getRookie();
 			this.send(msg, h);
 		}
 	}
 	//Sends a message to the member associated to an request.
-	public void offerMatchesHackerFinderNotification(final Finder f) {
+	public void offerMatchesRookieFinderNotification(final Finder f) {
 		Assert.notNull(f);
 
 		final Message msg = this.create();
@@ -175,7 +175,7 @@ public class MessageService {
 		msg.setTags("New offer / Nueva oferta");
 		msg.setSent(new Date(System.currentTimeMillis() - 1));
 
-		final Hacker h = this.finderService.getHackerByFinder(f.getId());
+		final Rookie h = this.finderService.getRookieByFinder(f.getId());
 		this.send(msg, h);
 	}
 
