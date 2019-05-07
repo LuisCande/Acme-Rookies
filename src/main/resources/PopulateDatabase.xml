@@ -530,7 +530,7 @@
 		<property name="score" value="7.0" />
 		<property name="finalMode" value="true" />
 		<property name="auditor" ref="auditor1" />
-		<property name="position" ref="position2" />
+		<property name="position" ref="position1" />
 	</bean>	
 	
 	<bean id="audit3" class="domain.Audit">
@@ -602,23 +602,6 @@
 		<property name="provider" ref="provider2" />
 		<property name="position" ref="position5" />
 		<property name="charge" value="65.14" />
-	</bean>
-	<bean id="sponsorship5" class="domain.Sponsorship">
-		<property name="banner" value="https://upload.wikimedia.org/wikipedia/commons/c/ce/Coca-Cola_logo.svg" />
-		<property name="targetPage" value="https://www.cocacola.com" />
-		<property name="creditCard" ref="creditCard13" />
-		<property name="provider" ref="provider2" />
-		<property name="position" ref="position5" />
-		<property name="charge" value="285.0" />
-	</bean>
-
-	<bean id="sponsorship6" class="domain.Sponsorship">
-		<property name="banner" value="https://www.mercadona.com/estaticos/images/mercadona_logo/es/mercadona-imagotipo-color-300.png" />
-		<property name="targetPage" value="https://www.mercadona.es/"/>
-		<property name="creditCard" ref="creditCard13" />
-		<property name="provider" ref="provider2" />
-		<property name="position" ref="position5" />
-		<property name="charge" value="212.70" />
 	</bean>
 	
 	

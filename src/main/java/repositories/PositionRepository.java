@@ -52,4 +52,16 @@ public interface PositionRepository extends JpaRepository<Position, Integer> {
 	@Query("select p from Position p join p.company c where p.finalMode='1' and p.cancelled='0' and (p.title like %?1% or p.description like %?1% or p.requiredSkills like %?1% or p.requiredTech like %?1% or p.requiredProfile like %?1% or p.description like %?1% or c.commercialName like %?1%)")
 	Collection<Position> searchPosition(String keyWord);
 
+	//The average, the minimum, the maximum, and the standard deviation of the audit score of the positions stored in the system
+	@Query("select avg((select avg(a.score) from Audit a where a.position.id=p.id)*1.), min((select avg(a.score) from Audit a where a.position.id=p.id)*1.), max((select avg(a.score) from Audit a where a.position.id=p.id)*1.), stddev((select avg(a.score) from Audit a where a.position.id=p.id)*1.) from Position p")
+	Double[] avgMinMaxStddevAuditScorePerPosition();
+
+	//The average salary offered by the positions that have the highest average audit score
+	@Query("select avg(p.offeredSalary) from Position p where (select avg(a1.score) from Audit a1 where a1.position.id=p.id)>(select avg((select avg(a.score) from Audit a where a.position.id=p.id)*1.) from Position p)")
+	Collection<String> avgSalaryOfferedPerPositionWithHighestAvgAuditScore();
+
+	//The average, the minimum, the maximum, and the standard deviation of the number of sponsorships per position
+	@Query("select avg((select count(s) from Sponsorship s where s.position.id=p.id)*1.), min((select count(s) from Sponsorship s where s.position.id=p.id)*1.), max((select count(s) from Sponsorship s where s.position.id=p.id)*1.), stddev((select count(s) from Sponsorship s where s.position.id=p.id)*1.) from Position p")
+	Double[] avgMinMaxStddevSponsorshipsPerPosition();
+
 }

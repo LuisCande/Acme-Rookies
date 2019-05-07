@@ -210,7 +210,24 @@ public class CompanyService {
 	public Collection<String> companiesWithMoreOfferedPossitions() {
 		Collection<String> results = new ArrayList<>();
 		final Collection<String> companies = this.companyRepository.companiesWithMoreOfferedPossitions();
-		final int maxResults = 1;
+		final int maxResults = 2;
+		if (companies.size() > maxResults)
+			results = new ArrayList<String>(((ArrayList<String>) companies).subList(0, maxResults));
+		else
+			results = companies;
+		return results;
+	}
+
+	//The average, the minimum, the maximum, and the standard deviation of the audit score of the companies that are registered in the system
+	public Double[] avgMinMaxStddevAuditScorePerCompany() {
+		return this.companyRepository.avgMinMaxStddevAuditScorePerCompany();
+	}
+
+	//The companies with the highest audit score.
+	public Collection<String> companiesWithHighAuditScore() {
+		Collection<String> results = new ArrayList<>();
+		final Collection<String> companies = this.companyRepository.companiesWithHighAuditScore();
+		final int maxResults = 2;
 		if (companies.size() > maxResults)
 			results = new ArrayList<String>(((ArrayList<String>) companies).subList(0, maxResults));
 		else
