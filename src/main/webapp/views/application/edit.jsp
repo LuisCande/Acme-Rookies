@@ -61,7 +61,7 @@
 	
 	<%-- Hidden attributes --%>
 	
-	<security:authorize access="hasRole('HACKER')">
+	<security:authorize access="hasRole('ROOKIE')">
 	
 	<jstl:if test="${application.id == 0}">
 		<acme:select code="application.curriculum" path="curriculum"
@@ -89,6 +89,6 @@
 		
 		<acme:submit code="application.save" name="save"/>
 		
-		<acme:cancel code="application.cancel" url ="/application/hacker/list.do" />
+		<acme:cancel code="application.cancel" url ="/application/rookie/list.do" />
 
 </form:form>

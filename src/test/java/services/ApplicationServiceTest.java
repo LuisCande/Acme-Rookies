@@ -46,28 +46,28 @@ public class ApplicationServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 			//Total sentence coverage : Coverage 94,1% | Covered Instructions 96 | Missed Instructions 6 | Total Instructions 102
 			{
-				"hacker1", null, "application1", "edit", null
+				"rookie1", null, "application1", "edit", null
 
 			},
 
 			/*
-			 * Positive test: A hacker dits his application.
-			 * Requisite tested: Functional requirement - 10.1 An actor who is authenticated as a hacker must be able to
+			 * Positive test: A rookie dits his application.
+			 * Requisite tested: Functional requirement - 10.1 An actor who is authenticated as a rookie must be able to
 			 * Manage his or her applications, which includes listing them grouped by status, showing them, creating them, and updating them
 			 * Data coverage : From 5 editable attributes we tried to edit 1 attribute (answerDescription) with valid data.
-			 * Exception expected: None. A Hacker can edit his applications.
+			 * Exception expected: None. A Rookie can edit his applications.
 			 */
 
 			{
-				"hacker3", "curriculum3", "position5", "create", null
+				"rookie3", "curriculum3", "position5", "create", null
 			},
 
 		/*
-		 * Positive test: A hacker tries to create an Application. Hacker 2. 172
-		 * Requisite tested: Functional requirement - 10.1 An actor who is authenticated as a hacker must be able to
+		 * Positive test: A rookie tries to create an Application. Rookie 2. 172
+		 * Requisite tested: Functional requirement - 10.1 An actor who is authenticated as a rookie must be able to
 		 * Manage his or her applications, which includes listing them grouped by status, showing them, creating them, and updating them
 		 * Data coverage : We created a application with 2 out of 2 valid parameters.
-		 * Exception expected: None. A Hacker can create applications.
+		 * Exception expected: None. A Rookie can create applications.
 		 */
 
 		};
@@ -88,14 +88,14 @@ public class ApplicationServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 			//Total sentence coverage : Coverage 92.1% | Covered Instructions 70 | Missed Instructions 6 | Total Instructions 76
 			{
-				"hacker2", null, "application1", "editNegative", IllegalArgumentException.class
+				"rookie2", null, "application1", "editNegative", IllegalArgumentException.class
 			},
 		/*
-		 * Negative test: A hacker tries to create an Application.
-		 * Requisite tested: Functional requirement - 10.1 An actor who is authenticated as a hacker must be able to
+		 * Negative test: A rookie tries to create an Application.
+		 * Requisite tested: Functional requirement - 10.1 An actor who is authenticated as a rookie must be able to
 		 * Manage his or her applications, which includes listing them grouped by status, showing them, creating them, and updating them
 		 * Data coverage : From 5 editable attributes we tried to edit 1 attribute (answerDescription) with a user that is not the owner.
-		 * Exception expected: IllegalArgumentException. A Hacker can not edit applications from another hacker.
+		 * Exception expected: IllegalArgumentException. A Rookie can not edit applications from another rookie.
 		 */
 
 		};

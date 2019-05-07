@@ -69,7 +69,7 @@
 		<property name="welcomeES"
 			value="¡Bienvenidos a Acme Rookies! ¡Somos el mercado de trabajo favorito de los profesionales de las TICs!" />
 		<property name="welcomeEN"
-			value="Welcome to Acme Rookies! We're IT hacker's favourite job marketplace!" />
+			value="Welcome to Acme Rookies! We're IT rookie's favourite job marketplace!" />
 		<property name="spamWords">
 			<list>
 				<value>sex</value>

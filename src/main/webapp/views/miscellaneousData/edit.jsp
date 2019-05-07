@@ -29,7 +29,7 @@
 <spring:message code="miscellaneousData.cancel" var="cancel" />
 <spring:message code="miscellaneousData.confirm" var="confirm" />
 
-<security:authorize access="hasRole('HACKER')">
+<security:authorize access="hasRole('ROOKIE')">
 
 	<form:form action="${requestURI}" modelAttribute="miscellaneousData">
 
@@ -52,7 +52,7 @@
 				onclick="return confirm('${confirm}')" />&nbsp;
 	</jstl:if>
 
-	<acme:cancel url="curriculum/hacker/list.do" code="miscellaneousData.cancel" />
+	<acme:cancel url="curriculum/rookie/list.do" code="miscellaneousData.cancel" />
 
 
 </form:form>

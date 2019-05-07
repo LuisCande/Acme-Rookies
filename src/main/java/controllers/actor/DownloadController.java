@@ -28,8 +28,10 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import domain.Actor;
 import domain.Administrator;
+import domain.Auditor;
 import domain.Company;
-import domain.Hacker;
+import domain.Provider;
+import domain.Rookie;
 
 @Controller
 @RequestMapping("/download")
@@ -59,9 +61,17 @@ public class DownloadController {
 		final Authority authCompany = new Authority();
 		authCompany.setAuthority(Authority.COMPANY);
 
-		final Hacker hacker = new Hacker();
-		final Authority authHacker = new Authority();
-		authHacker.setAuthority(Authority.HACKER);
+		final Rookie rookie = new Rookie();
+		final Authority authRookie = new Authority();
+		authRookie.setAuthority(Authority.ROOKIE);
+
+		final Provider provider = new Provider();
+		final Authority authProvider = new Authority();
+		authProvider.setAuthority(Authority.PROVIDER);
+
+		final Auditor auditor = new Auditor();
+		final Authority authAuditor = new Authority();
+		authAuditor.setAuthority(Authority.AUDITOR);
 
 		final Administrator admin = new Administrator();
 		final Authority authAdmin = new Authority();
@@ -88,17 +98,42 @@ public class DownloadController {
 				company.setCommercialName(companyPrincipal.getCommercialName());
 				final String json = mapper.writeValueAsString(companyPrincipal);
 				paragraph.add(json);
-			} else if (principal.getUserAccount().getAuthorities().contains(authHacker)) {
-				final Hacker hackerPrincipal = (Hacker) this.actorService.findByPrincipal();
-				hacker.setName(hackerPrincipal.getName());
-				hacker.setSurnames(hackerPrincipal.getSurnames());
-				hacker.setVatNumber(hackerPrincipal.getVatNumber());
-				hacker.setCreditCard(hackerPrincipal.getCreditCard());
-				hacker.setPhoto(hackerPrincipal.getPhoto());
-				hacker.setEmail(hackerPrincipal.getEmail());
-				hacker.setPhone(hackerPrincipal.getPhone());
-				hacker.setAddress(hackerPrincipal.getAddress());
-				final String json = mapper.writeValueAsString(hacker);
+			} else if (principal.getUserAccount().getAuthorities().contains(authRookie)) {
+				final Rookie rookiePrincipal = (Rookie) this.actorService.findByPrincipal();
+				rookie.setName(rookiePrincipal.getName());
+				rookie.setSurnames(rookiePrincipal.getSurnames());
+				rookie.setVatNumber(rookiePrincipal.getVatNumber());
+				rookie.setCreditCard(rookiePrincipal.getCreditCard());
+				rookie.setPhoto(rookiePrincipal.getPhoto());
+				rookie.setEmail(rookiePrincipal.getEmail());
+				rookie.setPhone(rookiePrincipal.getPhone());
+				rookie.setAddress(rookiePrincipal.getAddress());
+				final String json = mapper.writeValueAsString(rookie);
+				paragraph.add(json);
+			} else if (principal.getUserAccount().getAuthorities().contains(authProvider)) {
+				final Provider providerPrincipal = (Provider) this.actorService.findByPrincipal();
+				provider.setName(providerPrincipal.getName());
+				provider.setSurnames(providerPrincipal.getSurnames());
+				provider.setVatNumber(providerPrincipal.getVatNumber());
+				provider.setCreditCard(providerPrincipal.getCreditCard());
+				provider.setPhoto(providerPrincipal.getPhoto());
+				provider.setEmail(providerPrincipal.getEmail());
+				provider.setPhone(providerPrincipal.getPhone());
+				provider.setAddress(providerPrincipal.getAddress());
+				provider.setMakeP(providerPrincipal.getMakeP());
+				final String json = mapper.writeValueAsString(provider);
+				paragraph.add(json);
+			} else if (principal.getUserAccount().getAuthorities().contains(authAuditor)) {
+				final Auditor auditorPrincipal = (Auditor) this.actorService.findByPrincipal();
+				auditor.setName(auditorPrincipal.getName());
+				auditor.setSurnames(auditorPrincipal.getSurnames());
+				auditor.setVatNumber(auditorPrincipal.getVatNumber());
+				auditor.setCreditCard(auditorPrincipal.getCreditCard());
+				auditor.setPhoto(auditorPrincipal.getPhoto());
+				auditor.setEmail(auditorPrincipal.getEmail());
+				auditor.setPhone(auditorPrincipal.getPhone());
+				auditor.setAddress(auditorPrincipal.getAddress());
+				final String json = mapper.writeValueAsString(auditor);
 				paragraph.add(json);
 			} else if (principal.getUserAccount().getAuthorities().contains(authAdmin)) {
 				final Administrator adminPrincipal = (Administrator) this.actorService.findByPrincipal();

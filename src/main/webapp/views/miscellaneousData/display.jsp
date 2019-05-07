@@ -25,7 +25,7 @@
 <spring:message code="miscellaneousData.edit" var="msgEdit" />
 <spring:message code="miscellaneousData.return" var="msgReturn" />
 
-<security:authorize access="hasRole('HACKER')">
+<security:authorize access="hasRole('ROOKIE')">
 
 	<%-- For the curriculum in the list received as model, display the following information: --%>
 	<jstl:out value="${msgText}" />:

@@ -39,37 +39,37 @@ public class EducationDataServiceTest extends AbstractTest {
 			//Total sentence coverage : Coverage 94.3% | Covered Instructions 100 | Missed Instructions 6 | Total Instructions 106
 
 			{
-				"hacker1", null, "curriculum1", "create", null
+				"rookie1", null, "curriculum1", "create", null
 			},
 			/*
 			 * 
-			 * Positive test: A hacker registers a new educationData
-			 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a hacker must be able
+			 * Positive test: A rookie registers a new educationData
+			 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a rookie must be able
 			 * to: Manage his or her curricula , which includes listing, showing, creating, updating, and deleting them.
 			 * Data coverage : We created a new educationData with valid data.
-			 * Exception expected: None. A hacker can create an educationData.
+			 * Exception expected: None. A rookie can create an educationData.
 			 */{
-				"hacker1", null, "educationData1", "edit", null
+				"rookie1", null, "educationData1", "edit", null
 			},
 
 			/*
-			 * Positive test: A hacker edit his educationData.
-			 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a hacker must be able
+			 * Positive test: A rookie edit his educationData.
+			 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a rookie must be able
 			 * to: Manage his or her curricula , which includes listing, showing, creating, updating, and deleting them.
 			 * Data coverage : From 5 editable attributes we tried to edit 1 attribute (degree) with valid data.
-			 * Exception expected: None. A hacker can edit his educationDatas.
+			 * Exception expected: None. A rookie can edit his educationDatas.
 			 */
 
 			{
-				"hacker1", null, "educationData1", "delete", null
+				"rookie1", null, "educationData1", "delete", null
 			},
 		/*
 		 * 
-		 * Positive test: A hacker delete his educationData
-		 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a hacker must be able
+		 * Positive test: A rookie delete his educationData
+		 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a rookie must be able
 		 * to: Manage his or her curricula , which includes listing, showing, creating, updating, and deleting them.
 		 * Data coverage : We tried to delete a educationData.
-		 * Exception expected: None. A hacker can delete his educationData.
+		 * Exception expected: None. A rookie can delete his educationData.
 		 */
 
 		};
@@ -90,36 +90,36 @@ public class EducationDataServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 			//Total Sentence Coverage: Coverage 95.1% | Covered Instructions 116 | Missed Instructions 6 | Total Instructions 122
 			{
-				"hacker1", "", "curriculum1", "createNegative", ConstraintViolationException.class
+				"rookie1", "", "curriculum1", "createNegative", ConstraintViolationException.class
 			},
 			/*
-			 * Negative: A hacker tries to create a educationData
-			 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a hacker must be able
+			 * Negative: A rookie tries to create a educationData
+			 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a rookie must be able
 			 * to: Manage his or her curricula , which includes listing, showing, creating, updating, and deleting them.
 			 * Data coverage: We created a educationData with 4 out of 5 valid parameters.
 			 * Exception expected: ConstraintViolationException. Degree cannot be blank.
 			 */
 
 			{
-				"hacker2", null, "educationData1", "editNegative", IllegalArgumentException.class
+				"rookie2", null, "educationData1", "editNegative", IllegalArgumentException.class
 			},
 
 			/*
-			 * Negative test: A hacker tries to edit a educationData that not owns.
-			 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a hacker must be able
+			 * Negative test: A rookie tries to edit a educationData that not owns.
+			 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a rookie must be able
 			 * to: Manage his or her curricula , which includes listing, showing, creating, updating, and deleting them.
 			 * Data coverage : From 4 editable attributes we tried to edit 1 attribute (Institution) with a user that is not the owner.
-			 * Exception expected: IllegalArgumentException. A Hacker can not edit educationDatas from another hacker.
+			 * Exception expected: IllegalArgumentException. A Rookie can not edit educationDatas from another rookie.
 			 */
 			{
-				"hacker2", null, "educationData1", "deleteNegative", IllegalArgumentException.class
+				"rookie2", null, "educationData1", "deleteNegative", IllegalArgumentException.class
 			},
 		/*
-		 * Negative test: A hacker tries to delete a educationData that not owns.
-		 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a hacker must be able
+		 * Negative test: A rookie tries to delete a educationData that not owns.
+		 * Requisite tested: Functional requirement - 17.1. An actor who is authenticated as a rookie must be able
 		 * to: Manage his or her curricula , which includes listing, showing, creating, updating, and deleting them.
 		 * Data coverage : We tried to delete a educationData with a user that is not the owner.
-		 * Exception expected: IllegalArgumentException. A Hacker can not delete educationDatas from another hacker.
+		 * Exception expected: IllegalArgumentException. A Rookie can not delete educationDatas from another rookie.
 		 */
 		};
 

@@ -28,7 +28,7 @@ public class SocialProfileServiceTest extends AbstractTest {
 	// Since having one @Test for every case is not optimal we divided the user cases in two cases. Positives and Negatives.
 
 	@Autowired
-	private HackerService			hackerService;
+	private RookieService			rookieService;
 
 	@Autowired
 	private SocialProfileService	socialProfileService;
@@ -40,14 +40,14 @@ public class SocialProfileServiceTest extends AbstractTest {
 			//Total sentence coverage : Coverage 91.2% | Covered Instructions 62 | Missed Instructions 6 | Total Instructions 68
 
 			{
-				"hacker1", null, null, "create", null
+				"rookie1", null, null, "create", null
 			}
 		/*
-		 * Positive test: A actor(hacker) registers his socialProfile.
-		 * Requisite tested: Functional requirement - 11.1 An actor who is authenticated as a hacker must be able to manage his or her socialProfiles to march on a procession, which includes listing them by status, showing, creating them, and deleting
+		 * Positive test: A actor(rookie) registers his socialProfile.
+		 * Requisite tested: Functional requirement - 11.1 An actor who is authenticated as a rookie must be able to manage his or her socialProfiles to march on a procession, which includes listing them by status, showing, creating them, and deleting
 		 * them.
 		 * Data coverage : We created a socialProfile by providing 3 out of 3 editable attributes.
-		 * Exception expected: None. A actor (Hacker) can create socialProfiles.
+		 * Exception expected: None. A actor (Rookie) can create socialProfiles.
 		 */
 		};
 
@@ -68,11 +68,11 @@ public class SocialProfileServiceTest extends AbstractTest {
 			//Total sentence coverage : Coverage 92.1% | Covered Instructions 70 | Missed Instructions 6 | Total Instructions 76
 
 			{
-				"hacker1", null, "parade3", "create2", ConstraintViolationException.class
+				"rookie1", null, "parade3", "create2", ConstraintViolationException.class
 			}
 		/*
 		 * Negative test: Creating a socialProfile with invalid profileLink.
-		 * Requisite tested: Functional requirement - 11.1 An actor who is authenticated as a hacker must be able to manage his or her socialProfiles to march on a procession, which includes listing them by status, showing, creating them, and deleting
+		 * Requisite tested: Functional requirement - 11.1 An actor who is authenticated as a rookie must be able to manage his or her socialProfiles to march on a procession, which includes listing them by status, showing, creating them, and deleting
 		 * them.
 		 * Data coverage : We created a socialProfile with 1 invalid out of 3 attribute.
 		 * Exception expected: ConstraintViolationException. ProfileLink must be an url.
@@ -102,7 +102,7 @@ public class SocialProfileServiceTest extends AbstractTest {
 				s.setNick("nick");
 				s.setSocialNetwork("socialNetWork");
 				s.setProfileLink("https://www.instagram.com");
-				s.setActor(this.hackerService.findOne(this.getEntityId(username)));
+				s.setActor(this.rookieService.findOne(this.getEntityId(username)));
 
 				this.socialProfileService.save(s);
 			} else if (operation.equals("create2")) {
@@ -111,7 +111,7 @@ public class SocialProfileServiceTest extends AbstractTest {
 				s.setNick("nick");
 				s.setSocialNetwork("socialNetWork");
 				s.setProfileLink("url");
-				s.setActor(this.hackerService.findOne(this.getEntityId(username)));
+				s.setActor(this.rookieService.findOne(this.getEntityId(username)));
 
 				this.socialProfileService.save(s);
 			}

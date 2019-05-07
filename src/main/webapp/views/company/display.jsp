@@ -56,7 +56,7 @@
 	</jstl:if>
 	<jstl:if test="${empty company.auditScore}">
 	<jstl:out value="${auditScore}" />:
-	<jstl:out value="${auditScore.nil}" />
+	<jstl:out value="${auditScoreNill}" />
 	<br />
 	</jstl:if>
 	<jstl:out value="${name}" />:

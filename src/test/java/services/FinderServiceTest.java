@@ -35,15 +35,15 @@ public class FinderServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 			//Total sentence coverage : Coverage 89,3% | Covered Instructions 50 | Missed Instructions 6 | Total Instructions 56
 			{
-				"hacker1", "finder1", null
+				"rookie1", "finder1", null
 
 			},
 		/*
-		 * Positive test: A hacker edits his finder.
-		 * Requisite tested: Functional requirement - 17. An actor who is authenticated as a hacker must be able to:
+		 * Positive test: A rookie edits his finder.
+		 * Requisite tested: Functional requirement - 17. An actor who is authenticated as a rookie must be able to:
 		 * 2. Manage his or her finder, which involves updating the search criteria, listing its contents, and clearing it.
 		 * Data coverage : From 5 editable attributes we tried to edit 1 attribute (keyword) with valid authority.
-		 * Exception expected: None. A hacker can edit his finders.
+		 * Exception expected: None. A rookie can edit his finders.
 		 */
 
 		};
@@ -68,7 +68,7 @@ public class FinderServiceTest extends AbstractTest {
 			}
 		/*
 		 * Negative test: A company edit finder.
-		 * Requisite tested: Functional requirement - 17. An actor who is authenticated as a hacker must be able to:
+		 * Requisite tested: Functional requirement - 17. An actor who is authenticated as a rookie must be able to:
 		 * 2. Manage his or her finder, which involves updating the search criteria, listing its contents, and clearing it.
 		 * Data coverage : From 5 editable attributes we tried to edit 1 attribute (keyword) with invalid authority.
 		 * Exception expected: IllegalArgumentException. A company can not edit a finder.
@@ -91,7 +91,7 @@ public class FinderServiceTest extends AbstractTest {
 
 		caught = null;
 		try {
-			if (username == "hacker1") {
+			if (username == "rookie1") {
 				super.authenticate(username);
 				final Finder finder = this.finderService.findOne(this.getEntityId(id));
 				finder.setKeyWord("Tester");

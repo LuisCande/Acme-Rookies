@@ -62,7 +62,7 @@ public class PersonalDataService {
 		Assert.notNull(er);
 
 		//Assertion that the user modifying this education record has the correct privilege.
-		Assert.isTrue(this.actorService.findByPrincipal().getId() == er.getCurriculum().getHacker().getId());
+		Assert.isTrue(this.actorService.findByPrincipal().getId() == er.getCurriculum().getRookie().getId());
 
 		//Assertion the phone number has the correct pattern
 		Assert.isTrue(this.actorService.checkPhone(er.getPhoneNumber()));
@@ -75,7 +75,7 @@ public class PersonalDataService {
 		Assert.notNull(er);
 
 		//Assertion that the user deleting this education record has the correct privilege.
-		Assert.isTrue(this.actorService.findByPrincipal().getId() == er.getCurriculum().getHacker().getId());
+		Assert.isTrue(this.actorService.findByPrincipal().getId() == er.getCurriculum().getRookie().getId());
 
 		this.personalDataRepository.delete(er);
 	}
@@ -104,7 +104,7 @@ public class PersonalDataService {
 			throw new ValidationException();
 
 		//Assertion that the user modifying this task has the correct privilege.
-		Assert.isTrue(this.actorService.findByPrincipal().getId() == result.getCurriculum().getHacker().getId());
+		Assert.isTrue(this.actorService.findByPrincipal().getId() == result.getCurriculum().getRookie().getId());
 
 		//Assertion the phone number has the correct pattern
 		Assert.isTrue(this.actorService.checkPhone(result.getPhoneNumber()));

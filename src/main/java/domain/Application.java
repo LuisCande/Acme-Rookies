@@ -22,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Access(AccessType.PROPERTY)
 @Table(indexes = {
-	@Index(columnList = "hacker, status")
+	@Index(columnList = "rookie, status")
 })
 public class Application extends DomainEntity {
 
@@ -39,7 +39,7 @@ public class Application extends DomainEntity {
 	private Curriculum	curriculum;
 	private Problem		problem;
 	private Position	position;
-	private Hacker		hacker;
+	private Rookie		rookie;
 
 
 	//Getters
@@ -98,8 +98,8 @@ public class Application extends DomainEntity {
 	@Valid
 	@NotNull
 	@ManyToOne(optional = false)
-	public Hacker getHacker() {
-		return this.hacker;
+	public Rookie getRookie() {
+		return this.rookie;
 	}
 
 	//Setters
@@ -131,8 +131,8 @@ public class Application extends DomainEntity {
 		this.position = position;
 	}
 
-	public void setHacker(final Hacker hacker) {
-		this.hacker = hacker;
+	public void setRookie(final Rookie rookie) {
+		this.rookie = rookie;
 	}
 
 	public void setCurriculum(final Curriculum curriculum) {

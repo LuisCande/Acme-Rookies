@@ -47,8 +47,8 @@
 									code="master.page.actor.edit" /></a></li>
 					</security:authorize>
 
-					<security:authorize access="hasRole('HACKER')">
-						<li><a href="hacker/edit.do"><spring:message
+					<security:authorize access="hasRole('ROOKIE')">
+						<li><a href="rookie/edit.do"><spring:message
 									code="master.page.actor.edit" /></a></li>
 					</security:authorize>
 					
@@ -87,6 +87,8 @@
 								code="master.page.administrator.configuration" /></a></li>
 					<li><a href="administrator/flagSpam.do"><spring:message
 								code="master.page.administrator.flagSpam" /></a></li>
+					<li><a href="administrator/computeScore.do"><spring:message
+								code="master.page.administrator.computeScore" /></a></li>
 					<li><a href="administrator/bannableList.do"><spring:message
 								code="master.page.administrator.bannableList" /></a></li>
 				</ul></li>
@@ -115,14 +117,14 @@
 				</ul>
 			</li>
 		</security:authorize>
-		<security:authorize access="hasRole('HACKER')">
-			<li><a href="curriculum/hacker/list.do"><spring:message
+		<security:authorize access="hasRole('ROOKIE')">
+			<li><a href="curriculum/rookie/list.do"><spring:message
 					code="master.page.curriculum.list" /></a></li>
 
-			<li><a href="finder/hacker/edit.do"><spring:message
+			<li><a href="finder/rookie/edit.do"><spring:message
 					code="master.page.finder.edit" /></a></li>
 					
-			<li><a href="application/hacker/list.do"><spring:message
+			<li><a href="application/rookie/list.do"><spring:message
 					code="master.page.application.list" /></a></li>
 		</security:authorize>
 		
@@ -161,8 +163,8 @@
 
 					<li><a href="company/create.do"><spring:message
 								code="master.page.register.company" /></a></li>
-					<li><a href="hacker/create.do"><spring:message
-								code="master.page.register.hacker" /></a></li>
+					<li><a href="rookie/create.do"><spring:message
+								code="master.page.register.rookie" /></a></li>
 					<li><a href="provider/create.do"><spring:message
 								code="master.page.register.provider" /></a></li>
 

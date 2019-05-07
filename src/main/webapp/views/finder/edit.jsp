@@ -23,7 +23,7 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <%-- Stored message variables --%>
-<security:authorize access="hasRole('HACKER')">
+<security:authorize access="hasRole('ROOKIE')">
 
 	<spring:message code="finder.keyWord" var="msgKeyWord" />
 	<spring:message code="finder.minSalary" var="msgMinSalary" />

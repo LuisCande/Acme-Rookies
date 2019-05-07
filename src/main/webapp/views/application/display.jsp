@@ -25,7 +25,7 @@
 <spring:message code="application.status" var="status" />
 <spring:message code="application.position" var="position" />
 <spring:message code="application.moment" var="moment" />
-<spring:message code="application.hacker" var="hacker" />
+<spring:message code="application.rookie" var="rookie" />
 <spring:message code="application.answer" var="answer" />
 <spring:message code="application.answerDescription" var="answerDescription" />
 <spring:message code="application.answerLink" var="answerLink" />
@@ -53,8 +53,8 @@
 	<fmt:formatDate value="${application.moment}" pattern="${formatDate}" />
 	<br />
 	
-	<jstl:out value="${hacker}" />:
-	<jstl:out value="${application.hacker.name} "/><jstl:out value="${application.hacker.surnames}"/>
+	<jstl:out value="${rookie}" />:
+	<jstl:out value="${application.rookie.name} "/><jstl:out value="${application.rookie.surnames}"/>
 	<br />
 	<br />
 	

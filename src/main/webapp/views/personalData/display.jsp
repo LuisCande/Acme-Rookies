@@ -28,7 +28,7 @@
 <spring:message code="personalData.return" var="msgReturn" />
 
 
-<security:authorize access="hasRole('HACKER')">
+<security:authorize access="hasRole('ROOKIE')">
 	<%-- For the curriculum in the list received as model, display the following information: --%>
 	<jstl:out value="${msgFullName}" />:
 	<jstl:out value="${personalData.fullName}" />
@@ -52,7 +52,7 @@
 	
 
 	<spring:url var="editUrl"
-		value="personalData/hacker/edit.do">
+		value="personalData/rookie/edit.do">
 		<spring:param name="varId"
 			value="${personalData.id}"/>
 	</spring:url>

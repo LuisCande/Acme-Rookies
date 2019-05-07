@@ -24,7 +24,7 @@
 <spring:message code="application.accept" var="accept" />
 <spring:message code="application.reject" var="reject" />
 <spring:message code="application.position.ticker" var="ticker" />
-<spring:message code="application.hacker" var="hacker" />
+<spring:message code="application.rookie" var="rookie" />
 <spring:message code="application.problem" var="problem" />
 <spring:message code="application.create" var="create" />
 <spring:message code="application.display" var="display" />
@@ -47,14 +47,14 @@
 	<display:column property="problem.title" title="${problemTitle}"/>
 	
 	<security:authorize access="hasRole('COMPANY')"> 
-	<display:column property="hacker.userAccount.username" title="${hacker}"/>
+	<display:column property="rookie.userAccount.username" title="${rookie}"/>
 	</security:authorize>
 	
 	<%-- Edition button --%>
 
-	<security:authorize access="hasRole('HACKER')"> 
+	<security:authorize access="hasRole('ROOKIE')"> 
 	
-	<spring:url var="editUrl" value="application/hacker/edit.do">
+	<spring:url var="editUrl" value="application/rookie/edit.do">
 		<spring:param name="varId" value="${row.id}" />
 	</spring:url>
 	
@@ -64,7 +64,7 @@
 		</jstl:if>
 	</display:column> 
 	
-	<spring:url var="displayUrl" value="application/hacker/display.do">
+	<spring:url var="displayUrl" value="application/rookie/display.do">
 		<spring:param name="varId" value="${row.id}" />
 	</spring:url>
 
@@ -109,9 +109,9 @@
 	
 </display:table>
 
-<security:authorize access="hasRole('HACKER')"> 
+<security:authorize access="hasRole('ROOKIE')"> 
 
-<spring:url var="createUrl" value="application/hacker/create.do" />
+<spring:url var="createUrl" value="application/rookie/create.do" />
 	<a href="${createUrl}"><jstl:out value="${create}" /></a>
 
 </security:authorize>
