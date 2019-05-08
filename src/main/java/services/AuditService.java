@@ -46,6 +46,7 @@ public class AuditService {
 
 		a.setAuditor((Auditor) this.actorService.findByPrincipal());
 		a.setFinalMode(false);
+		a.setMoment(new Date(System.currentTimeMillis() - 1));
 
 		return a;
 	}
@@ -98,9 +99,6 @@ public class AuditService {
 
 		//Assertion that the user modifying this task has the correct privilege.
 		Assert.isTrue(result.getFinalMode() == false);
-
-		if (result.getMoment() == null)
-			result.setMoment(new Date(System.currentTimeMillis() - 1));
 
 		result.setText(p.getText());
 		result.setScore(p.getScore());

@@ -179,6 +179,22 @@ public class MessageService {
 		this.send(msg, h);
 	}
 
+	//Sends a broadcast message to notify of rebranding.
+	public void notifyRebranding() {
+		Message message;
+		final Configuration config = this.configurationService.findAll().iterator().next();
+		message = this.create();
+		message.setTags("SYSTEM");
+		message.setSubject("Rebranding notification / Aviso del cambio de nombre");
+		message.setBody("This is a message to notify the rebranding. Now we are Acme-Rookies! / Este es un mensaje para notificarle sobre el cambio de nombre. ¡Ahora somos Acme-Rookies!");
+		message.setSent(new Date(System.currentTimeMillis() - 1));
+
+		config.setNameAnnounced(true);
+		this.configurationService.save(config);
+
+		this.broadcastMessage(message);
+	}
+
 	//Reconstruct
 	public Message reconstruct(final Message m, final BindingResult binding) {
 		Message result;

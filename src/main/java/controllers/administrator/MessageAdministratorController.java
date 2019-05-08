@@ -2,7 +2,6 @@
 package controllers.administrator;
 
 import java.util.Collection;
-import java.util.Date;
 
 import javax.validation.ValidationException;
 
@@ -41,7 +40,6 @@ public class MessageAdministratorController extends AbstractController {
 	@RequestMapping(value = "/announce", method = RequestMethod.GET)
 	public ModelAndView announce() {
 		final ModelAndView result;
-		Message message1;
 
 		final Configuration config = this.configurationService.findAll().iterator().next();
 
@@ -52,18 +50,7 @@ public class MessageAdministratorController extends AbstractController {
 			result.addObject("requestURI", "configuration/administrator/display.do");
 			return result;
 		}
-
-		message1 = this.messageService.create();
-		message1.setTags("SYSTEM");
-		message1.setSubject("Rebranding notification / Aviso del cambio de nombre");
-		message1.setBody("This is a message to notify the rebranding. Now we are Acme-Rookies!");
-		message1.setSent(new Date(System.currentTimeMillis() - 1));
-
-		config.setNameAnnounced(true);
-		this.configurationService.save(config);
-
-		this.messageService.broadcastMessage(message1);
-
+		this.messageService.notifyRebranding();
 		result.addObject("configuration", config);
 		result.addObject("requestURI", "configuration/administrator/display.do");
 		return result;

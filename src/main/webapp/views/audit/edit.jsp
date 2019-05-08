@@ -44,7 +44,6 @@
 	
 	<form:hidden path="id" />
 	
-	<acme:textbox code="audit.moment" path="moment" placeholder="formatDate.pattern"/>
 	<acme:textarea code="audit.text" path="text" />
 	<form:label path="score">
 			<jstl:out value="${score}"/>
