@@ -561,7 +561,7 @@
 		<property name="moment" value="2018/10/21 13:02" />
 		<property name="text" value="Very high complexity" />
 		<property name="score" value="7.0" />
-		<property name="finalMode" value="true" />
+		<property name="finalMode" value="false" />
 		<property name="auditor" ref="auditor1" />
 		<property name="position" ref="position1" />
 	</bean>	
