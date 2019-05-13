@@ -358,8 +358,9 @@ public class PositionService {
 	}
 
 	//The average salary offered by the positions that have the highest average audit score
-	public Collection<String> avgSalaryOfferedPerPositionWithHighestAvgAuditScore() {
+	public Double avgSalaryOfferedPerPositionWithHighestAvgAuditScore() {
 		return this.positionRepository.avgSalaryOfferedPerPositionWithHighestAvgAuditScore();
+
 	}
 
 	//The average, the minimum, the maximum, and the standard deviation of the number of sponsorships per position

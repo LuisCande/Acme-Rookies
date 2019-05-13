@@ -66,9 +66,12 @@
 		<spring:param name="varId" value="${row.id}" />
 	</spring:url>
 		
+	<jstl:if test="${canEdit eq true}">
 	<display:column title="${edit}">
 			<a href="${editUrl}"><jstl:out value="${edit}" /></a>
 	</display:column>		
+	</jstl:if>
+
 
 	<!-- Delete -->
 	
@@ -76,10 +79,12 @@
 		<spring:param name="varId" value="${row.id}" />
 	</spring:url>
 	
-	
+	<jstl:if test="${canEdit eq true}">
 	<display:column title="${msgDelete}">
 			<a href="${deleteURL}" onclick="return confirm('${msgConfirm}')" ><jstl:out value="${msgDelete}" /></a>
 	</display:column>
+	</jstl:if>
+	
 	</security:authorize>
 </display:table>
 <security:authorize access="hasRole('PROVIDER')">

@@ -24,7 +24,7 @@ public interface PositionRepository extends JpaRepository<Position, Integer> {
 	@Query("select distinct p from Position p join p.problems pr where pr.id=?1")
 	Collection<Position> getPositionsOfAProblem(int id);
 
-	//Positions which a rookie can do applications
+	//Positdions which a rookie can do applications
 	@Query("select p from Position p where p.finalMode=true and p.cancelled=false and p not in (select a.position from Application a where a.rookie.id=?1 and a.status!='3')")
 	Collection<Position> positionsForRequestsByRookie(int id);
 
@@ -58,7 +58,7 @@ public interface PositionRepository extends JpaRepository<Position, Integer> {
 
 	//The average salary offered by the positions that have the highest average audit score
 	@Query("select avg(p.offeredSalary) from Position p where (select avg(a1.score) from Audit a1 where a1.position.id=p.id)>(select avg((select avg(a.score) from Audit a where a.position.id=p.id)*1.) from Position p)")
-	Collection<String> avgSalaryOfferedPerPositionWithHighestAvgAuditScore();
+	Double avgSalaryOfferedPerPositionWithHighestAvgAuditScore();
 
 	//The average, the minimum, the maximum, and the standard deviation of the number of sponsorships per position
 	@Query("select avg((select count(s) from Sponsorship s where s.position.id=p.id)*1.), min((select count(s) from Sponsorship s where s.position.id=p.id)*1.), max((select count(s) from Sponsorship s where s.position.id=p.id)*1.), stddev((select count(s) from Sponsorship s where s.position.id=p.id)*1.) from Position p")

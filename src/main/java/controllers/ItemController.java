@@ -52,11 +52,13 @@ public class ItemController extends AbstractController {
 	public ModelAndView list() {
 		final ModelAndView result;
 		final Collection<Item> items;
+		final Boolean canEdit = false;
 
 		items = this.itemService.findAll();
 
 		result = new ModelAndView("item/list");
 		result.addObject("items", items);
+		result.addObject("canEdit", canEdit);
 		result.addObject("requestURI", "item/list.do");
 
 		return result;
