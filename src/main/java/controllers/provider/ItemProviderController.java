@@ -72,12 +72,14 @@ public class ItemProviderController extends AbstractController {
 		final ModelAndView result;
 		final Collection<Item> items;
 		final Provider provider = this.providerService.findOne(this.actorService.findByPrincipal().getId());
+		final Boolean canEdit = true;
 
 		//QUERY
 		items = this.itemService.getItemsForProvider(provider.getId());
 
 		result = new ModelAndView("item/list");
 		result.addObject("items", items);
+		result.addObject("canEdit", canEdit);
 		result.addObject("requestURI", "item/provider/list.do");
 
 		return result;

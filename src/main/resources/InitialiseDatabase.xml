@@ -62,7 +62,7 @@
 	
 	<!-- Configuration beans -->
 	
-	<bean id="configuration1" class="domain.Configuration">
+		<bean id="configuration1" class="domain.Configuration">
 		<property name="systemName" value="Acme Rookies" />
 		<property name="banner"
 			value="https://i.imgur.com/7b8lu4b.png" />
@@ -86,6 +86,9 @@
 		<property name="countryCode" value="+34 " />
 		<property name="expireFinderMinutes" value="60" />
 		<property name="maxFinderResults" value="10" />
+		<property name="vat" value="1.21" />
+		<property name="fare" value="5.00" />
+		<property name="nameAnnounced" value="false" />
 	</bean>
 	
 	<!-- Other domain beans come here -->	

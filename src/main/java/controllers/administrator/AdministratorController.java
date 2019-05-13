@@ -34,6 +34,7 @@ import services.ConfigurationService;
 import services.CurriculumService;
 import services.FinderService;
 import services.PositionService;
+import services.ProviderService;
 import services.RookieService;
 import controllers.AbstractController;
 import domain.Actor;
@@ -79,6 +80,9 @@ public class AdministratorController extends AbstractController {
 
 	@Autowired
 	private ConfigurationService	configurationService;
+
+	@Autowired
+	private ProviderService			providerService;
 
 
 	//Creation
@@ -214,6 +218,16 @@ public class AdministratorController extends AbstractController {
 		result.addObject("minMaxAvgStddevCurriculaPerRookie", Arrays.toString(this.curriculumService.minMaxAvgStddevCurriculaPerRookie()));
 		result.addObject("minMaxAvgStddevResultsFinders", Arrays.toString(this.finderService.minMaxAvgStddevResultsFinders()));
 		result.addObject("ratioEmptyVersusNonEmptyFinders", this.finderService.ratioEmptyVersusNonEmptyFinders());
+
+		result.addObject("avgMinMaxStddevAuditScorePerPosition", Arrays.toString(this.positionService.avgMinMaxStddevAuditScorePerPosition()));
+		result.addObject("avgMinMaxStddevAuditScorePerCompany", Arrays.toString(this.companyService.avgMinMaxStddevAuditScorePerCompany()));
+		result.addObject("companiesWithHighAuditScore", this.companyService.companiesWithHighAuditScore());
+		result.addObject("avgSalaryOfferedPerPositionWithHighestAvgAuditScore", this.positionService.avgSalaryOfferedPerPositionWithHighestAvgAuditScore());
+		result.addObject("minMaxAvgStddevItemPerProvider", Arrays.toString(this.providerService.minMaxAvgStddevItemPerProvider()));
+		result.addObject("top5ProviderInTermsOfItems", this.providerService.top5ProviderInTermsOfItems());
+		result.addObject("avgMinMaxStddevSponsorshipsPerProvider", Arrays.toString(this.providerService.avgMinMaxStddevSponsorshipsPerProvider()));
+		result.addObject("avgMinMaxStddevSponsorshipsPerPosition", Arrays.toString(this.positionService.avgMinMaxStddevSponsorshipsPerPosition()));
+		result.addObject("providersWith10PerCentMoreSponsorshipsThanAvg", this.providerService.providersWith10PerCentMoreSponsorshipsThanAvg());
 
 		result.addObject("requestURI", "administrator/dashboard.do");
 

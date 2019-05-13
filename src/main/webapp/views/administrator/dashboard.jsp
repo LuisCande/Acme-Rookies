@@ -30,6 +30,18 @@
 <spring:message code="administrator.queryb2" var="queryb2" />
 <spring:message code="administrator.queryb3" var="queryb3" />
 
+<spring:message code="administrator.queryARc1" var="queryARc1" />
+<spring:message code="administrator.queryARc2" var="queryARc2" />
+<spring:message code="administrator.queryARc3" var="queryARc3" />
+<spring:message code="administrator.queryARc4" var="queryARc4" />
+<spring:message code="administrator.queryARb1" var="queryARb1" />
+<spring:message code="administrator.queryARb2" var="queryARb2" />
+<spring:message code="administrator.queryARa1" var="queryARa1" />
+<spring:message code="administrator.queryARa2" var="queryARa2" />
+<spring:message code="administrator.queryARa3" var="queryARa3" />
+
+<spring:message code="administrator.notPosition" var="notPosition" />
+
 <spring:message code="administrator.return" var="returnMsg" />
 
 <security:authorize access="hasRole('ADMIN')" >
@@ -83,7 +95,56 @@
     		<td><jstl:out value="${queryb3}" /></td>
     		<td><jstl:out value="${ratioEmptyVersusNonEmptyFinders}" /></td> 
   		</tr>
+		
+  		<tr>
+    		<td><jstl:out value="${queryARc1}" /></td>
+    		<td><jstl:out value="${avgMinMaxStddevAuditScorePerPosition}" /></td> 
+  		</tr>
   		
+  		<tr>
+    		<td><jstl:out value="${queryARc2}" /></td>
+    		<td><jstl:out value="${avgMinMaxStddevAuditScorePerCompany}" /></td> 
+  		</tr>
+  		
+  		<tr>
+    		<td><jstl:out value="${queryARc3}" /></td>
+    		<td><jstl:out value="${companiesWithHighAuditScore}" /></td> 
+  		</tr>
+  		
+  		<tr>
+    		<td><jstl:out value="${queryARc4}" /></td>
+    		<jstl:if test="${empty avgSalaryOfferedPerPositionWithHighestAvgAuditScore}">
+    		<td><jstl:out value="${notPosition}" /></td> 
+    		</jstl:if>
+    		<jstl:if test="${not empty avgSalaryOfferedPerPositionWithHighestAvgAuditScore}">
+    		<td><jstl:out value="${avgSalaryOfferedPerPositionWithHighestAvgAuditScore}" /></td> 
+    		</jstl:if> 
+  		</tr>
+  		
+  		<tr>
+    		<td><jstl:out value="${queryARb1}" /></td>
+    		<td><jstl:out value="${minMaxAvgStddevItemPerProvider}" /></td> 
+  		</tr>
+  		
+  		<tr>
+    		<td><jstl:out value="${queryARb2}" /></td>
+    		<td><jstl:out value="${top5ProviderInTermsOfItems}" /></td> 
+  		</tr>
+  		
+  		<tr>
+    		<td><jstl:out value="${queryARa1}" /></td>
+    		<td><jstl:out value="${avgMinMaxStddevSponsorshipsPerProvider}" /></td> 
+  		</tr>
+  		
+  		<tr>
+    		<td><jstl:out value="${queryARa2}" /></td>
+    		<td><jstl:out value="${avgMinMaxStddevSponsorshipsPerPosition}" /></td> 
+  		</tr>
+  		
+  		<tr>
+    		<td><jstl:out value="${queryARa3}" /></td>
+    		<td><jstl:out value="${providersWith10PerCentMoreSponsorshipsThanAvg}" /></td> 
+  		</tr>
   		
 	</table>
 	
